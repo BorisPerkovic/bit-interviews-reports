@@ -1,0 +1,13 @@
+.row-form {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.invalid input {
+  border-color: red;
+}
+.invalid label {
+  color: red;
+}
