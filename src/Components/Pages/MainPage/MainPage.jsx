@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
+import { Link } from "react-router-dom";
 import CandidateCard from "./CandidateCard/CandidateCard";
 import Spinner from "../../Spinner/Spinner";
-import { Fragment } from "react";
 
 const MainPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [logIn, setLogIn] = useState(false);
+
+  const candidates = ["", "", "", ""];
 
   const isLogedIn = () => {
     const token = localStorage.getItem("token");
@@ -46,10 +48,11 @@ const MainPage = () => {
           </nav>
           <main className="container py-4 ">
             <div className=" row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5">
-              <CandidateCard />
-              <CandidateCard />
-              <CandidateCard />
-              <CandidateCard />
+              {candidates.map((candidate, i) => (
+                <Link to={`/single-candidate/${i}`}>
+                  <CandidateCard key={i} candidate={candidate} />
+                </Link>
+              ))}
             </div>
           </main>
         </div>
