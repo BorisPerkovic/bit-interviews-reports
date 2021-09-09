@@ -1,0 +1,14 @@
+.imgHolder img{
+
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+}
+
+
+.imgHolder{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

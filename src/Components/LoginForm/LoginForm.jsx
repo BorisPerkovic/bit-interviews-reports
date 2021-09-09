@@ -56,6 +56,7 @@ const LoginForm = () => {
             } else {
                 setIsLoading(false);
                 localStorage.setItem("token", data.accessToken);
+                window.location.assign('http://localhost:3000/interviewreports');
             }
         }
         logInRequest();
