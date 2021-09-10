@@ -10,7 +10,7 @@ const App = () => {
     <Fragment>
       <Header />
       <Switch>
-        <Route exact path="/interviewreports" component={MainPage} />
+        <Route exact path="/" component={MainPage} />
         <Route path="/login" component={LoginForm} />
       </Switch>
       <Footer />

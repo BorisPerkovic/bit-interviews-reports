@@ -1,19 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
-const Header=()=>{
+const Header = () => {
 
-return(
+    return(
+        <header className='container d-flex justify-content-between align-items-center p-4'>
+            <h1>Interview Reports</h1>
+            <Link to="/"><button type='button' className='btn btn-info'>Candidates</button></Link> 
+        </header>
+    );
 
-    <header className='container d-flex justify-content-between align-items-center'>
-        <h1>Interwiew Reports</h1>
-        <button type='button' className='btn btn-info'>Candidates</button>
-    </header>
+};
 
-)
-
-
-
-}
-
-export default Header ;
+export default Header;

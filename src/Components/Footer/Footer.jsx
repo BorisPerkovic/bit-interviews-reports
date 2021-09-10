@@ -1,19 +1,14 @@
 import React from "react";
-import classes from './Footer.module.css'
 
+import classes from "./Footer.module.css";
 
-const Footer=()=>{
+const Footer = () => {
 
-return(
+    return(
+        <footer className={classes.footer} >
+            <p className='text-center'>Footer</p>
+        </footer>
+    );
+};
 
-    <footer >
-        <p className='text-center'>Footer</p>
-    </footer>
-
-)
-
-
-
-}
-
-export default Footer ;
+export default Footer;
