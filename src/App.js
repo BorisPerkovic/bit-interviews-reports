@@ -13,7 +13,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={MainPage} />
         <Route path="/login" component={LoginForm} />
-        <Route path="/candidatereport" component={CandidateReports} />
+        <Route path="/single-candidate/:id" component={CandidateReports} />
       </Switch>
       <Footer />
     </Fragment>
