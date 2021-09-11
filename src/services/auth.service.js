@@ -21,5 +21,15 @@ export class AuthService {
     return data;
   }
   
+  async getSingleCandidate(id) {
+    const tokenObj = localStorage.getItem('token');
+    const requestOptions = {
+      method: "GET",
+      headers: { "Authorization": `Bearer ${tokenObj}` }
+  };
+    const response = await fetch(CANDIDATES+'/'+id, requestOptions);
+    const data = await response.json();
+    return data;
+  }
 
 };
