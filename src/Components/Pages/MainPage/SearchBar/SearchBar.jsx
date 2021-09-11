@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 /* SearchBar component includes in MainPage component */
-const SearchBar = () => {
+const SearchBar = ({ getSearchValue }) => {
+  const inputHandler = (event) => {
+    const inputValue = event.target.value;
+    console.log(inputValue);
+    getSearchValue(inputValue);
+  };
 
-  return(
+  return (
     <nav className="navbar navbar-light bg-light border-bottom border-dark">
       <div className="container  py-4">
         <div className="row w-100">
@@ -16,13 +21,13 @@ const SearchBar = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              onChange={inputHandler}
             />
           </div>
         </div>
       </div>
     </nav>
   );
-
 };
 
 export default SearchBar;

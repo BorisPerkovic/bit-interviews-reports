@@ -4,10 +4,10 @@ import CandidateCard from "./CandidateCard/CandidateCard";
 import Spinner from "../../Spinner/Spinner";
 import { AuthService } from "../../../services/auth.service";
 import SearchBar from "./SearchBar/SearchBar";
+import { searchBarService } from "./SearchBar/SearchBar.service";
 
 /* MainPage component */
 const MainPage = () => {
-
   /* creating instance for AuthServices */
   const auth = new AuthService();
 
@@ -15,6 +15,8 @@ const MainPage = () => {
   const [candidates, setCandidates] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [logIn, setLogIn] = useState(false);
+  const [searchedCandidates, setSearchedCandidates] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
   const isLogedIn = () => {
@@ -30,29 +32,46 @@ const MainPage = () => {
   /* function for fetching candidates data from API, put data from API in setCandidates state */
   const getCandidates = () => {
     const fetchCandidates = async () => {
-      const candidatesResponse = await auth.getCandidates(); 
-      const candidatesFiltered = candidatesResponse.filter(item => item.name);
+      const candidatesResponse = await auth.getCandidates();
+      const candidatesFiltered = candidatesResponse.filter((item) => item.name);
       setCandidates(candidatesFiltered);
+      setSearchedCandidates(candidates);
       setIsLoading(false);
-    }
+    };
     fetchCandidates();
-  }
+  };
+  /* function to get value from child component SearchBar */
+  const getSearchValue = (input) => {
+    setSearchValue(input);
+  };
+  /* function to set searched candidates and display resoults */
+  const searchCandidates = () => {
+    const filteredCandidates = searchBarService.filterNews(
+      candidates,
+      searchValue
+    );
+    setSearchedCandidates(filteredCandidates);
+  };
 
   /* creating useEffect on mounting MainPage component for isLogedIn and getCandidates functions */
   useEffect(isLogedIn, []);
   useEffect(getCandidates, []);
+  useEffect(searchCandidates, [candidates, searchValue]);
 
   /* returning component to App and display JSX */
   return (
     <Fragment>
       {logIn && (
-        <div className="container">
-          <SearchBar />
+        <div className="container main-mb">
+          <SearchBar getSearchValue={getSearchValue} />
           <main className="container py-5">
-          {isLoading && <Spinner />}
+            {isLoading && <Spinner />}
             <div className=" row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5">
-              {candidates.map(candidate => (
-                <Link key={candidate.id} to={`/single-candidate/${candidate.id}`}>
+              {searchedCandidates.map((candidate) => (
+                <Link
+                  key={candidate.id}
+                  to={`/single-candidate/${candidate.id}`}
+                >
                   <CandidateCard candidate={candidate} />
                 </Link>
               ))}
