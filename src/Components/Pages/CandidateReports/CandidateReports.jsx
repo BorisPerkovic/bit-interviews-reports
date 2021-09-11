@@ -9,6 +9,7 @@ const CandidateReports=(props)=>{
 const [candidate, setCandidate] = useState({});
 const [isLoading, setIsLoading] = useState(true); 
 const [logIn, setLogIn] = useState(false);
+const [reports, setReports] = useState([]);
 // const [singleCandidateID,setSingleCandidateID]=useState('');
 
 
@@ -34,17 +35,32 @@ const getCandidate = () => {
   const singleCandidateID=props.match.params.id;
   const fetchCandidates = async () => {
     const candidatesResponse = await auth.getSingleCandidate(singleCandidateID); 
-    console.log(candidatesResponse);
     setCandidate(candidatesResponse);
     setIsLoading(false);
   }
   fetchCandidates();
 }
 
+const getReport = () => {
+  const singleCandidateID=parseInt(props.match.params.id);
+  const fetchReports = async () => {
+    const reportsResponse = await auth.getCandidatesReport(); 
+    console.log(reportsResponse);
+    const filteredReport= reportsResponse.filter(item=>item.candidateId===singleCandidateID);
+    console.log(filteredReport);
+    setReports(filteredReport);
+    setIsLoading(false);
+  }
+  fetchReports();
+}
+
+
+
 
 /* creating useEffect on mounting CandidatesReports  component for isLogedIn and getCandidate functions */
 useEffect(isLogedIn, []);
 useEffect(getCandidate, []);
+useEffect(getReport, []);
 
 // {isLoading && <Spinner />}
   let date = new Date(candidate.birthday);
@@ -82,27 +98,19 @@ return(
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Google</td>
-                      <td>20.12.2017</td>
-                      <td className = "d-flex justify-content-between"><span>Passed</span><span className = "me-2"><i class="far fa-eye"></i></span></td>
+                    {reports.map(report=>
+                      <tr>
+
+                      <td>{report.companyName}</td>
+                      <td>{report.interviewDate}</td>
+                      <td className = "d-flex justify-content-between"><span>{report.status}</span><span className = "me-2"><i class="far fa-eye"></i></span></td>
                       
                     </tr>
-                    <tr>
-                      <td>Facebook</td>
-                      <td>22.12.2017</td>
-                      <td className = "d-flex justify-content-between"><span>Declined</span><span className = "me-2"><i class="far fa-eye"></i></span></td>
-                    </tr>
-                    <tr>
-                      <td>Instagram</td>
-                      <td>28.12.2017</td>
-                      <td className = "d-flex justify-content-between"><span>Passed</span><span className = "me-2"><i class="far fa-eye"></i></span></td>
-                    </tr>
-                    <tr>
-                      <td>Linkedin</td>
-                      <td>04.01.2018</td>
-                      <td className = "d-flex justify-content-between"><span>Passed</span><span className = "me-2"><i class="far fa-eye"></i></span></td>
-                    </tr>
+                      
+                      
+                      )}
+                    
+                   
                   </tbody>
                 </table>
 
