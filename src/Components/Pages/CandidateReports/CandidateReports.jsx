@@ -6,7 +6,7 @@ const CandidateReports=()=>{
 
 return(
 
-    <div className = "container-fluid">
+    <div className = "container-fluid main-mb">
         <div className = "container container-info d-flex row">
             <div className = {`col ${classes.picture}`}><img className = "img-fluid" src = "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"></img></div>
             <div className = "container col">
@@ -37,22 +37,23 @@ return(
                     <tr>
                       <td>Google</td>
                       <td>20.12.2017</td>
-                      <td>Passed</td>
+                      <td className = "d-flex justify-content-between"><span>Passed</span><span className = "me-2"><i class="far fa-eye"></i></span></td>
+                      
                     </tr>
                     <tr>
                       <td>Facebook</td>
                       <td>22.12.2017</td>
-                      <td>Declined</td>
+                      <td className = "d-flex justify-content-between"><span>Declined</span><span className = "me-2"><i class="far fa-eye"></i></span></td>
                     </tr>
                     <tr>
                       <td>Instagram</td>
                       <td>28.12.2017</td>
-                      <td>Passed</td>
+                      <td className = "d-flex justify-content-between"><span>Passed</span><span className = "me-2"><i class="far fa-eye"></i></span></td>
                     </tr>
                     <tr>
                       <td>Linkedin</td>
                       <td>04.01.2018</td>
-                      <td>Passed</td>
+                      <td className = "d-flex justify-content-between"><span>Passed</span><span className = "me-2"><i class="far fa-eye"></i></span></td>
                     </tr>
                   </tbody>
                 </table>

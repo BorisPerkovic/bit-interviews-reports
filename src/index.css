@@ -23,3 +23,7 @@ html{
 body{
   position: absolute;
 }
+
+.main-mb{
+  margin-bottom: 150px;
+}
