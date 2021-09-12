@@ -1,6 +1,9 @@
 /* API endpoint for candidates */
-export const CANDIDATES = "http://localhost:3333/api/candidates";
-export const REPORTS = "http://localhost:3333/api/reports";
+export const CANDIDATES_URL = "http://localhost:3333/api/candidates";
+export const REPORTS_URL = "http://localhost:3333/api/reports";
+export const LOGIN_URL = "http://localhost:3333/login";
+export const BASE_URL = "http://localhost:3000/";
+
 
 // export const COMPANIES = Object.freeze({
 //     GOOGLE: {

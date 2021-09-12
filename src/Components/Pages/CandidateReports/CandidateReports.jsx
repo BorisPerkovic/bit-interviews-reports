@@ -1,6 +1,6 @@
 import React,{useState,useEffect, Fragment} from "react";
 import classes from './CandidateReports.module.css';
-import { AuthService } from "../../../services/auth.service";
+import { authService } from "../../../services/auth.service";
 import Spinner from "../../Spinner/Spinner";
 import ModalReports from "../../Modal/ModalReports/ModalReports";
 
@@ -16,15 +16,9 @@ const [detailsReportModal, setDetailsReportModal] = useState({});
 // const [singleCandidateID,setSingleCandidateID]=useState('');
 
 
-
- /* creating instance for AuthServices */
-const auth = new AuthService();
-
-
-
 /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
 const isLogedIn = () => {
-  const token = auth.getToken();
+  const token = authService.getToken();
   if (!token) {
     window.location.assign("http://localhost:3000/login");
     return false;
@@ -37,7 +31,7 @@ const isLogedIn = () => {
 const getCandidate = () => {
   const singleCandidateID=props.match.params.id;
   const fetchCandidates = async () => {
-    const candidatesResponse = await auth.getSingleCandidate(singleCandidateID); 
+    const candidatesResponse = await authService.getSingleCandidate(singleCandidateID); 
     setCandidate(candidatesResponse);
   }
   fetchCandidates();
@@ -46,7 +40,7 @@ const getCandidate = () => {
 const getReport = () => {
   const singleCandidateID=parseInt(props.match.params.id);
   const fetchReports = async () => {
-    const reportsResponse = await auth.getCandidatesReport();
+    const reportsResponse = await authService.getCandidatesReport();
     const filteredReport= reportsResponse.filter(item=>item.candidateId===singleCandidateID);
     setReports(filteredReport);
     setIsLoading(false);

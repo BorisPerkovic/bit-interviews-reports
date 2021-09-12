@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { authService } from "../../services/auth.service";
 import Spinner from "../Spinner/Spinner";
 
 
@@ -35,32 +36,8 @@ const LoginForm = () => {
         if(!formIsValid) {
             return;
         }
-
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                email: enteredEmail,
-                password: enteredPassword
-            })
-        };
-
-        const logInRequest = async () => {
-            setIsLoading(true);
-            
-            const response = await fetch("http://localhost:3333/login", requestOptions);
-            const data = await response.json();
-            if(data === "Cannot find user" || data === "Incorrect password") {
-                setIsLoading(false);
-                setErrorMessage("Email or password are not correct!");
-            } else {
-                setIsLoading(false);
-                localStorage.setItem("token", data.accessToken);
-                window.location.assign('http://localhost:3000/');
-            }
-        }
-        logInRequest();
         
+       authService.requestLogin(setIsLoading, setErrorMessage, enteredEmail, enteredPassword);
 
     };
 
