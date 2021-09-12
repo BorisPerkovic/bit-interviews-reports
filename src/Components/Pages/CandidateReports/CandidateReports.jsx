@@ -1,7 +1,8 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect, Fragment} from "react";
 import classes from './CandidateReports.module.css';
 import { AuthService } from "../../../services/auth.service";
 import Spinner from "../../Spinner/Spinner";
+import ModalReports from "../../Modal/ModalReports/ModalReports";
 
 
 const CandidateReports=(props)=>{
@@ -10,6 +11,8 @@ const [candidate, setCandidate] = useState({});
 const [isLoading, setIsLoading] = useState(true); 
 const [logIn, setLogIn] = useState(false);
 const [reports, setReports] = useState([]);
+const [displayReportModal, setDisplayReportModal] = useState(false);
+const [detailsReportModal, setDetailsReportModal] = useState({});
 // const [singleCandidateID,setSingleCandidateID]=useState('');
 
 
@@ -36,7 +39,6 @@ const getCandidate = () => {
   const fetchCandidates = async () => {
     const candidatesResponse = await auth.getSingleCandidate(singleCandidateID); 
     setCandidate(candidatesResponse);
-    setIsLoading(false);
   }
   fetchCandidates();
 }
@@ -44,18 +46,23 @@ const getCandidate = () => {
 const getReport = () => {
   const singleCandidateID=parseInt(props.match.params.id);
   const fetchReports = async () => {
-    const reportsResponse = await auth.getCandidatesReport(); 
-    console.log(reportsResponse);
+    const reportsResponse = await auth.getCandidatesReport();
     const filteredReport= reportsResponse.filter(item=>item.candidateId===singleCandidateID);
-    console.log(filteredReport);
     setReports(filteredReport);
     setIsLoading(false);
   }
   fetchReports();
 }
 
+const reportModalHandler = (id) => {
+  const companyReport = reports.filter( item => item.id === id);
+  setDetailsReportModal(companyReport);
+  setDisplayReportModal(true);
+}
 
-
+const reportModalClose = (param) => {
+  setDisplayReportModal(param);
+};
 
 /* creating useEffect on mounting CandidatesReports  component for isLogedIn and getCandidate functions */
 useEffect(isLogedIn, []);
@@ -70,22 +77,34 @@ useEffect(getReport, []);
 
 return(
 
-    <div className = "container-fluid main-mb">
-        <div className = "container container-info d-flex row">
-            <div className = {`col ${classes.picture}`}><img className = "img-fluid" src = "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"></img></div>
-            <div className = "container col">
+  <Fragment>
+    {displayReportModal && <ModalReports report={detailsReportModal} onClose={reportModalClose} />}
+    {isLoading && <Spinner />}
+    {!isLoading && (<div className = "container main-mb">
+        <div className = "row pt-4">
+            <div className = "col-md-5">
+              <img className = "img-fluid" src = "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png" alt="Avatar"></img>
+            </div>
+            <div className = "col-md-7">
               <div className = "row h-50 py-2">
-                <div className = "col"><span>Name:</span><p className = "px-3">{candidate.name}</p></div>
-                <div className = "col"><span>Date of birth: </span><p className = "px-3">{month}.{day}.{year}</p></div>
+                <div className = "col-md-6">
+                  <span>Name:</span><h4 className = "p-3">{candidate.name}</h4>
+                </div>
+                <div className = "col-md-6">
+                  <span>Date of birth: </span><h4 className = "p-3">{month}.{day}.{year}</h4>
+                </div>
               </div>
-              <div className = "row h-50">
-                <div className = "col"><span>Email: </span><p className = "px-3">{candidate.email}</p></div>
-                <div className = "col"><span>Education: </span><p className = "px-3">{candidate.education}</p></div>
+              <div className = "row h-50 py-2">
+                <div className = "col-md-6">
+                  <span>Email: </span><h4 className = "p-3">{candidate.email}</h4>
+                </div>
+                <div className = "col-md-6">
+                  <span>Education: </span><h4 className = "p-3">{candidate.education}</h4>
+                </div>
               </div>
             </div>
-
         </div>
-        <div className = "reports container">
+        <div className = "reports container py-5">
             <h3>Reports</h3>
 
             <div>
@@ -99,11 +118,11 @@ return(
                   </thead>
                   <tbody>
                     {reports.map(report=>
-                      <tr>
+                      <tr key={report.id}>
 
                       <td>{report.companyName}</td>
                       <td>{report.interviewDate}</td>
-                      <td className = "d-flex justify-content-between"><span>{report.status}</span><span className = "me-2"><i class="far fa-eye"></i></span></td>
+                      <td className = "d-flex justify-content-between"><span>{report.status}</span><span className = {`me-2 ${classes.eye}`} onClick={() =>{reportModalHandler(report.id)}}><i className="far fa-eye"></i></span></td>
                       
                     </tr>
                       
@@ -117,7 +136,9 @@ return(
             </div>
 
         </div>
-    </div>
+    </div>)}
+  </Fragment>
+    
 
 )
 
