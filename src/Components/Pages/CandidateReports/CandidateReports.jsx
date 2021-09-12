@@ -1,6 +1,7 @@
 import React,{useState,useEffect, Fragment} from "react";
 import classes from './CandidateReports.module.css';
 import { authService } from "../../../services/auth.service";
+import { dataService } from "../../../services/data.service";
 import Spinner from "../../Spinner/Spinner";
 import ModalReports from "../../Modal/ModalReports/ModalReports";
 
@@ -13,7 +14,6 @@ const [logIn, setLogIn] = useState(false);
 const [reports, setReports] = useState([]);
 const [displayReportModal, setDisplayReportModal] = useState(false);
 const [detailsReportModal, setDetailsReportModal] = useState({});
-// const [singleCandidateID,setSingleCandidateID]=useState('');
 
 
 /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
@@ -31,7 +31,7 @@ const isLogedIn = () => {
 const getCandidate = () => {
   const singleCandidateID=props.match.params.id;
   const fetchCandidates = async () => {
-    const candidatesResponse = await authService.getSingleCandidate(singleCandidateID); 
+    const candidatesResponse = await dataService.getSingleCandidate(singleCandidateID); 
     setCandidate(candidatesResponse);
   }
   fetchCandidates();
@@ -40,7 +40,7 @@ const getCandidate = () => {
 const getReport = () => {
   const singleCandidateID=parseInt(props.match.params.id);
   const fetchReports = async () => {
-    const reportsResponse = await authService.getCandidatesReport();
+    const reportsResponse = await dataService.getCandidatesReport();
     const filteredReport= reportsResponse.filter(item=>item.candidateId===singleCandidateID);
     setReports(filteredReport);
     setIsLoading(false);

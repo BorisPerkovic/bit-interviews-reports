@@ -5,6 +5,8 @@ import Spinner from "../../Spinner/Spinner";
 import { authService } from "../../../services/auth.service";
 import SearchBar from "./SearchBar/SearchBar";
 import { searchBarService } from "./SearchBar/SearchBar.service";
+import { dataService } from "../../../services/data.service";
+import { candidateService } from "./services/candidate.service";
 
 /* MainPage component */
 const MainPage = () => {
@@ -30,7 +32,8 @@ const MainPage = () => {
   /* function for fetching candidates data from API, put data from API in setCandidates state */
   const getCandidates = () => {
     const fetchCandidates = async () => {
-      const candidatesResponse = await authService.getCandidates();
+      const candidatesResponse = await dataService.getCandidates();
+      candidateService.createCandidate(candidatesResponse);
       const candidatesFiltered = candidatesResponse.filter((item) => item.name);
       setCandidates(candidatesFiltered);
       setSearchedCandidates(candidates);
