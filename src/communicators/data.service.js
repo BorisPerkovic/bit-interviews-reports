@@ -19,6 +19,14 @@ class DataService {
     return data;
   }
 
+  async getReports() {
+    const header = this.headerGET();
+    const response = await fetch(REPORTS_URL, header);
+    authService.isTokenExpired(response);
+    const data = await response.json();
+    return data;
+  }
+
   async getCandidatesReport(props) {
     const singleCandidateID = parseInt(props.match.params.id);
     const header = this.headerGET();
@@ -42,6 +50,9 @@ class DataService {
     const data = await response.json();
     return data;
   }
+
+
+
 }
 
 export const dataService = new DataService();

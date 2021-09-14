@@ -5,7 +5,7 @@ import { dataService } from "../../../services/data.service";
 import Spinner from "../../Spinner/Spinner";
 import ModalReports from "../../Modal/ModalReports/ModalReports";
 import { formateDate } from "../../../utils/date-function";
-import { candidateService } from "../MainPage/services/candidate.service";
+import { candidateService } from "../MainPage/services/CandidatesMapper";
 
 const CandidateReports = (props) => {
   const [candidate, setCandidate] = useState({});

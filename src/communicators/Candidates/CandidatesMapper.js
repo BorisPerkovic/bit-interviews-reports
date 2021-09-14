@@ -1,9 +1,7 @@
-import { Candidate } from "../../../../entities/Candidate";
+import { Candidate } from "../../entities/Candidate";
 
-class CandidateService {
-  constructor() {}
-
-  createCandidate(obj) {
+class CandidatesMapper {
+  apiToEntity(obj) {
     let validationCounter = 0;
 
     const getCandidateName = () => {
@@ -42,7 +40,7 @@ class CandidateService {
     if (validationCounter === 0) {
       return new Candidate(
         getCandidateId(obj.id),
-        getCandidateName(obj.name),
+        getCandidateName(obj.title),
         getCandidateImg(),
         candidateEmail,
         candidateDate,
@@ -54,6 +52,8 @@ class CandidateService {
   filterCandidate(arr) {
     return arr.filter(item => item.name);
   }
+
+  entityToApi(){}
   
 }
 

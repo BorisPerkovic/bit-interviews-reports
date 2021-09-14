@@ -6,7 +6,7 @@ import { authService } from "../../../services/auth.service";
 import SearchBar from "./SearchBar/SearchBar";
 import { searchBarService } from "./SearchBar/SearchBar.service";
 import { dataService } from "../../../services/data.service";
-import { candidateService } from "./services/candidate.service";
+import { candidateService } from "./services/CandidatesMapper";
 
 /* MainPage component */
 const MainPage = () => {
