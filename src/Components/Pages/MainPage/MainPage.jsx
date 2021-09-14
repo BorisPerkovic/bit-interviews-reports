@@ -31,8 +31,10 @@ const MainPage = () => {
   /* function for fetching candidates data from API, put data from API in setCandidates state */
   const getCandidates = async () => {
     const response = await dataService.getCandidates();
-    const candidateArray = response.map((obj) =>
-      candidateService.createCandidate(obj)
+
+     const candidateArray = candidateService.filterCandidate(response)
+     .map((obj) => 
+      candidateService.createCandidate(obj) 
     );
     setCandidates(candidateArray);
     setSearchedCandidates(candidates);

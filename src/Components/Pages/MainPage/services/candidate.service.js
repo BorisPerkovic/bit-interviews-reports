@@ -50,6 +50,11 @@ class CandidateService {
       );
     }
   }
+
+  filterCandidate(arr) {
+    return arr.filter(item => item.name);
+  }
+  
 }
 
 export const candidateService = new CandidateService();
