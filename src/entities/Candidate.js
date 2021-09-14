@@ -1,13 +1,10 @@
-
 export class Candidate {
-
-  constructor(id, name, image, email, dateOfBirth, education) {
+  constructor(id, name, image, email, birthday, education) {
     this.id = id;
     this.name = name;
     this.image = image;
     this.email = email;
-    this.dateOfBirth = dateOfBirth;
+    this.birthday = birthday;
     this.education = education;
-  };
-
-};
+  }
+}

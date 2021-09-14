@@ -10,7 +10,6 @@ import { candidateService } from "./services/candidate.service";
 
 /* MainPage component */
 const MainPage = () => {
-
   /* creating necessary states */
   const [candidates, setCandidates] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,17 +29,16 @@ const MainPage = () => {
   };
 
   /* function for fetching candidates data from API, put data from API in setCandidates state */
-  const getCandidates = () => {
-    const fetchCandidates = async () => {
-      const candidatesResponse = await dataService.getCandidates();
-      candidateService.createCandidate(candidatesResponse);
-      const candidatesFiltered = candidatesResponse.filter((item) => item.name);
-      setCandidates(candidatesFiltered);
-      setSearchedCandidates(candidates);
-      setIsLoading(false);
-    };
-    fetchCandidates();
+  const getCandidates = async () => {
+    const response = await dataService.getCandidates();
+    const candidateArray = response.map((obj) =>
+      candidateService.createCandidate(obj)
+    );
+    setCandidates(candidateArray);
+    setSearchedCandidates(candidates);
+    setIsLoading(false);
   };
+
   /* function to get value from child component SearchBar */
   const getSearchValue = (input) => {
     setSearchValue(input);
@@ -55,8 +53,11 @@ const MainPage = () => {
   };
 
   /* creating useEffect on mounting MainPage component for isLogedIn and getCandidates functions */
-  useEffect(isLogedIn, []);
-  useEffect(getCandidates, []);
+  useEffect(() => {
+    isLogedIn();
+    getCandidates();
+  }, []);
+
   useEffect(searchCandidates, [candidates, searchValue]);
 
   /* returning component to App and display JSX */
