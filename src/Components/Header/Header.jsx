@@ -1,13 +1,12 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
   const path = location.pathname !== "/login";
 
-  const logOut = (e) => {
-    e.preventDefault();
+  const logOut = () => {
     localStorage.removeItem("token");
     window.location.assign("/login");
   };
