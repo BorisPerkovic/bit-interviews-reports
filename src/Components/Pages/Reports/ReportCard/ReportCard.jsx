@@ -8,13 +8,21 @@ import classes from "./ReportCard.module.css";
 const ReportCard = ({ item }) => {
 
     const [displayReportModal, setDisplayReportModal] = useState(false);
+    const [detailsReportModal, setDetailsReportModal] = useState({});
     
-
+    const reportModalHandler = (report) => {
+        setDetailsReportModal(report);
+        setDisplayReportModal(true);
+    };
+    
+    const reportModalClose = (param) => {
+    setDisplayReportModal(param);
+    };
 
     return (
         <Fragment>
             {displayReportModal && (
-                <ModalReports  />
+                <ModalReports report={detailsReportModal} onClose={reportModalClose}  />
             )}
             <div className='row my-4 py-2 rounded shadow'>
                 <div className='col-sm-3 py-2 px-3 border-end border-dark'>
@@ -34,7 +42,7 @@ const ReportCard = ({ item }) => {
                     <span>Status</span>
                 </div>
                 <div className={`col-sm-2 p-2 d-flex justify-content-center align-items-center ${classes.reportsIcons}`}>
-                    <span className="me-5"> <i className="far fa-eye"></i> </span>
+                    <span className="me-5" onClick={() => { reportModalHandler(item)}}> <i className="far fa-eye"></i> </span>
                     <span> <i className="fas fa-times"></i> </span>
                 </div>
             </div>
