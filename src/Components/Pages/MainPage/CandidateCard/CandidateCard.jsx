@@ -7,7 +7,7 @@ const CandidateCard = ({ candidate }) => {
   return (
     <div className="col">
       <div className="card shadow">
-        <div className={classes.imgHolder}>
+        <div className="imgHolder">
           <img src={candidate.image} className="card-img-top  " alt="Avatar" />
         </div>
         <div className="card-body">
