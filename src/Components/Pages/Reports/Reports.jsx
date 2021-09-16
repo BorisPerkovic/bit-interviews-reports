@@ -10,6 +10,7 @@ const Reports = () =>{
     const [reports, setReports] = useState([]);
     const [logIn, setLogIn] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [deletedItem, setDeletedItem] = useState(false);
 
     /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
     const isLogedIn = () => {

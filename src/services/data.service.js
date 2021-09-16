@@ -11,6 +11,15 @@ class DataService {
     return requestOptions;
   }
 
+  headerDELETE() {
+    const tokenObj = localStorage.getItem("token");
+    const requestOptions = {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${tokenObj}` },
+    };
+    return requestOptions;
+  }
+
   async getCandidates() {
     const header = this.headerGET();
     const response = await fetch(CANDIDATES_URL, header);
@@ -24,6 +33,15 @@ class DataService {
     const response = await fetch(REPORTS_URL, header);
     authService.isTokenExpired(response);
     const data = await response.json();
+    return data;
+  }
+
+  async deleteReport(id){
+    const header = this.headerDELETE();
+    const response = await fetch(REPORTS_URL + '/' + id, header);
+    authService.isTokenExpired(response);
+    const data = await response.json();
+    this.getReports();
     return data;
   }
 
