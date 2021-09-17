@@ -36,12 +36,11 @@ class DataService {
     return data;
   }
 
-  async deleteReport(id){
+  async deleteReport(id,reports){
     const header = this.headerDELETE();
     const response = await fetch(REPORTS_URL + '/' + id, header);
     authService.isTokenExpired(response);
     const data = await response.json();
-    this.getReports();
     return data;
   }
 

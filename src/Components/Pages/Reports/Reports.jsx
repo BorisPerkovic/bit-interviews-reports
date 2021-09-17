@@ -32,7 +32,7 @@ const Reports = () =>{
     useEffect(() => {
         isLogedIn();
         getReports();
-    },[]);
+    },[deletedItem]);
 
     return (
         <Fragment>
@@ -49,7 +49,7 @@ const Reports = () =>{
                 </div>
                 <main className="container py-5">
                     {isLoading && <Spinner />}
-                    {reports.map(item=> <ReportCard key={item.id} item={item} />)}
+                    {reports.map(item=> <ReportCard key={item.id} item={item} setDeletedItem={setDeletedItem} deletedItem={deletedItem} />)}
                 </main>
             </div>)}
         </Fragment>

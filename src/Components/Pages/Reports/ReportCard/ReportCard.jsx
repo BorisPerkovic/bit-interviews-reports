@@ -6,7 +6,7 @@ import { dataService } from "../../../../services/data.service.js";
 
 import classes from "./ReportCard.module.css";
    
-const ReportCard = ({ item }) => {
+const ReportCard = ({item,setDeletedItem,deletedItem}) => {
 
     const [displayReportModal, setDisplayReportModal] = useState(false);
     const [detailsReportModal, setDetailsReportModal] = useState({});
@@ -21,10 +21,11 @@ const ReportCard = ({ item }) => {
     setDisplayReportModal(param);
     };
 
-    const deleteOneReport = (item) => {     
+    const deleteOneReport = (item) => {  
         dataService.deleteReport(item.id);
-        
+         setDeletedItem(!deletedItem);
     };
+
 
     return (
         <Fragment>
