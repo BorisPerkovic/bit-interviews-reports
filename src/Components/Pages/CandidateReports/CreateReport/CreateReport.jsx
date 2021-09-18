@@ -4,7 +4,6 @@ import SearchBar from "../../../SearchBar/SearchBar";
 import SelectCandidate from "./components/SelectCandidate/SelectCandidate";
 import SelectCompany from "./components/SelectCompany/SelectCompany";
 import FillReportDetails from "./components/FillReportDetails/FillReportDetails";
-import { SearchBarService } from "../../../SearchBar/SearchBar.service";
 
 export const CreateReport = () => {
   const [searchValue, setSearchValue] = useState("");

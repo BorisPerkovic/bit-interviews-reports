@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 
 const CandidateSelectItem = ({
   candidate,
@@ -17,7 +17,7 @@ const CandidateSelectItem = ({
           setActive(candidate.id, [candidate.id, setActive]);
           pickUserHandler(candidate.name, candidate.id);
         })}
-        className={`candidate-report-item ${
+        className={`candidate-report-item d-flex justify-content-start align-items-center ${
           isActive
             ? "border border-primary bg-info"
             : "border border-light bg-light"
