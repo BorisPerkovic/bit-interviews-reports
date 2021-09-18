@@ -14,7 +14,7 @@ export const CreateReport = () => {
     candidateName: null,
     companyId: null,
     companyName: null,
-    interviewDate: new Date(),
+    interviewDate: null,
     phase: null,
     status: null,
     note: null,
@@ -38,7 +38,7 @@ export const CreateReport = () => {
                   pickCompanyHandler={pickCompanyHandler} 
             />;
       case 3:
-        return <FillReportDetails searchValue={searchValue} />;
+        return <FillReportDetails searchValue={searchValue}  prevPage={prevPage}  pickFillReportHandler={pickFillReportHandler} newReport={newReport} />;
       default:
         return "";
     }
@@ -56,6 +56,10 @@ export const CreateReport = () => {
   const pickCompanyHandler = (companyName, companyId) => {
     setNewReport({ ...newReport, companyId, companyName });
   };
+
+  const pickFillReportHandler= (interviewDate,phase,status,note)=>{
+    setNewReport({...newReport,interviewDate:new Date(interviewDate),phase,status,note})
+  }
 
   const nextPage = () => {
     setSwitchValue(switchValue + 1);
@@ -79,7 +83,7 @@ export const CreateReport = () => {
   return (
     <div className="container-fluid main-mb">
       <div className="container">
-        <SearchBar getSearchValue={getSearchValue} reset={reset} />
+        {switchValue!==3 &&<SearchBar getSearchValue={getSearchValue} reset={reset} />}
         <div className="row">
           <div className="col-md-4 px-2 my-4 border-end border-dark">
             <CreateReportSideBar switchValue={switchValue} candidate={newReport} />
