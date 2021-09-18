@@ -40,7 +40,7 @@ body {
 }
 
 .select-wrapper {
-  height: 50vh;
+  min-height: 50vh;
   overflow: auto;
 }
 .candidate-report-item {

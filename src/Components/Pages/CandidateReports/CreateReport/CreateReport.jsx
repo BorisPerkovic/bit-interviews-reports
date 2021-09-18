@@ -30,7 +30,12 @@ export const CreateReport = () => {
           />
         );
       case 2:
-        return <SelectCompany searchValue={searchValue} />;
+        return <SelectCompany
+                  searchValue={searchValue}
+                  nextPage={nextPage}
+                  prevPage={prevPage}
+                  pickCompanyHandler={pickCompanyHandler} 
+            />;
       case 3:
         return <FillReportDetails searchValue={searchValue} />;
       default:
@@ -47,8 +52,16 @@ export const CreateReport = () => {
     setNewReport({ ...newReport, candidateId, candidateName });
   };
 
+  const pickCompanyHandler = (companyName, companyId) => {
+    setNewReport({ ...newReport, companyId, companyName });
+  };
+
   const nextPage = () => {
     setSwitchValue(switchValue + 1);
+  };
+
+  const prevPage = () => {
+    setSwitchValue(switchValue - 1);
   };
 
   return (
@@ -57,7 +70,7 @@ export const CreateReport = () => {
         <SearchBar getSearchValue={getSearchValue} />
         <div className="row">
           <div className="col-md-4 px-2 my-4 border-end border-dark">
-            <CreateReportSideBar switchValue={switchValue} />
+            <CreateReportSideBar switchValue={switchValue} candidate={newReport} />
           </div>
           <div className="col-md-8 px-2 my-4">{renderSwitch()}</div>
         </div>

@@ -1,4 +1,4 @@
-import { REPORTS_URL, CANDIDATES_URL } from "../constants/endpoints.js";
+import { REPORTS_URL, CANDIDATES_URL, COMPANIES_URL } from "../constants/endpoints.js";
 import { authService } from "./auth.service.js";
 
 class DataService {
@@ -61,6 +61,17 @@ class DataService {
     const header = this.headerGET();
     const response = await fetch(
       CANDIDATES_URL + "/" + singleCandidateID,
+      header
+    );
+    authService.isTokenExpired(response);
+    const data = await response.json();
+    return data;
+  }
+
+  async getCompanies() {
+    const header = this.headerGET();
+    const response = await fetch(
+      COMPANIES_URL,
       header
     );
     authService.isTokenExpired(response);

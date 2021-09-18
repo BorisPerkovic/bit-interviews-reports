@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { } from "react";
 
 /* SearchBar component includes in MainPage component */
-const SearchBar = ({ getSearchValue }) => {
+const SearchBar = ({ getSearchValue, }) => {
+
   const inputHandler = (event) => {
-    const inputValue = event.target.value;
-    console.log(inputValue);
-    getSearchValue(inputValue);
+    getSearchValue(event.target.value);
   };
 
   return (

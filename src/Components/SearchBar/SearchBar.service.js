@@ -3,8 +3,8 @@
  */
 export class SearchBarService {
   filterNews(arr, input) {
-    const filtered = arr.filter((candidate) => {
-      return candidate.name.toUpperCase().includes(input.toUpperCase());
+    const filtered = arr.filter((item) => {
+      return item.name.toUpperCase().includes(input.toUpperCase());
     });
 
     return filtered;

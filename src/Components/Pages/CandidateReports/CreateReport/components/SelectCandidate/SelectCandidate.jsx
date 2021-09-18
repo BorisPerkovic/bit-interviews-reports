@@ -38,7 +38,7 @@ const SelectCandidate = ({ pickUserHandler, nextPage, searchValue }) => {
   return (
     <Fragment>
       <div className="row px-4 gx-3 gy-2 select-wrapper">
-        {filterCandidateList.map((candidate, index) => (
+        {filterCandidateList.map((candidate) => (
           <CandidateSelectItem
             candidate={candidate}
             key={candidate.id}
