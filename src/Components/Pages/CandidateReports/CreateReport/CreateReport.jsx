@@ -58,7 +58,7 @@ export const CreateReport = () => {
         <SearchBar getSearchValue={getSearchValue} />
         <div className="row">
           <div className="col-md-4 px-2 my-4 border-end border-dark">
-            <CreateReportSideBar />
+            <CreateReportSideBar switchValue={switchValue} />
           </div>
           <div className="col-md-8 px-2 my-4">{renderSwitch()}</div>
         </div>

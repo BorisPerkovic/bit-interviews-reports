@@ -17,11 +17,11 @@ const CandidateSelectItem = ({
           setActive(candidate.id, [candidate.id, setActive]);
           pickUserHandler(candidate.name, candidate.id);
         })}
-        className={
+        className={`candidate-report-item ${
           isActive
             ? "border border-primary bg-info"
             : "border border-light bg-light"
-        }
+        }`}
       >
         <div className="imgHolder">
           <img src={candidate.image} alt={candidate.name} />
