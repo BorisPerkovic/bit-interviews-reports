@@ -6,24 +6,43 @@
   -created: September 2021
  =================================================*/
 
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html,body{
+html,
+body {
   min-height: 100%;
   width: 100%;
 }
-html{
+html {
   position: relative;
 }
-body{
+body {
   position: absolute;
 }
 
-.main-mb{
+.main-mb {
   margin-bottom: 150px;
+}
+.imgHolder img {
+  border-radius: 50%;
+  max-width: 10rem;
+  max-height: 10rem;
+}
+
+.imgHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.select-wrapper {
+  height: 50vh;
+  overflow: auto;
+}
+.candidate-report-item {
+  cursor: pointer;
 }
