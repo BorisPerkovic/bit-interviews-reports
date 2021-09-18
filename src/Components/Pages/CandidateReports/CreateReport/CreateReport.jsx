@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CreateReportSideBar from "./components/CreateReportSideBar/CreateReportSideBar";
 import SearchBar from "../../../SearchBar/SearchBar";
 import SelectCandidate from "./components/SelectCandidate/SelectCandidate";
@@ -7,6 +7,7 @@ import FillReportDetails from "./components/FillReportDetails/FillReportDetails"
 
 export const CreateReport = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [ reset, setReset ] = useState(false);
   const [switchValue, setSwitchValue] = useState(1);
   const [newReport, setNewReport] = useState({
     candidateId: null,
@@ -58,16 +59,27 @@ export const CreateReport = () => {
 
   const nextPage = () => {
     setSwitchValue(switchValue + 1);
+    resetInputHandler();
   };
 
   const prevPage = () => {
     setSwitchValue(switchValue - 1);
+    resetInputHandler();
   };
+
+  const resetInputHandler = () => {
+    setReset(true);
+    setSearchValue("");
+  };
+
+  useEffect(resetInputHandler, [switchValue]);
+
+  
 
   return (
     <div className="container-fluid main-mb">
       <div className="container">
-        <SearchBar getSearchValue={getSearchValue} />
+        <SearchBar getSearchValue={getSearchValue} reset={reset} />
         <div className="row">
           <div className="col-md-4 px-2 my-4 border-end border-dark">
             <CreateReportSideBar switchValue={switchValue} candidate={newReport} />
