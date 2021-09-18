@@ -1,14 +1,16 @@
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import {formateDate} from '../../../../utils/date-function.js';
 import ModalReports from "../../../Modal/ModalReports/ModalReports.jsx";
+import { dataService } from "../../../../services/data.service.js"; 
 
 import classes from "./ReportCard.module.css";
    
-const ReportCard = ({ item }) => {
+const ReportCard = ({item,setDeletedItem,deletedItem}) => {
 
     const [displayReportModal, setDisplayReportModal] = useState(false);
     const [detailsReportModal, setDetailsReportModal] = useState({});
+    
     
     const reportModalHandler = (report) => {
         setDetailsReportModal(report);
@@ -18,6 +20,12 @@ const ReportCard = ({ item }) => {
     const reportModalClose = (param) => {
     setDisplayReportModal(param);
     };
+
+    const deleteOneReport = (item) => {  
+        dataService.deleteReport(item.id);
+         setDeletedItem(!deletedItem);
+    };
+
 
     return (
         <Fragment>
@@ -42,8 +50,8 @@ const ReportCard = ({ item }) => {
                     <span>Status</span>
                 </div>
                 <div className={`col-sm-2 p-2 d-flex justify-content-center align-items-center ${classes.reportsIcons}`}>
-                    <span className="me-5" onClick={() => { reportModalHandler(item)}}> <i className="far fa-eye"></i> </span>
-                    <span> <i className="fas fa-times"></i> </span>
+                    <span className = "me-5" onClick={() => { reportModalHandler(item)}}> <i className="far fa-eye"></i> </span>
+                    <span> <i className = "fas fa-times" onClick = { () => deleteOneReport(item) }></i> </span>
                 </div>
             </div>
         </Fragment>
