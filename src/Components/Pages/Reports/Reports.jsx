@@ -3,6 +3,8 @@ import ReportCard from "./ReportCard/ReportCard";
 import { dataService } from "../../../services/data.service";
 import { authService } from "../../../services/auth.service";
 import Spinner from "../../Spinner/Spinner";
+import classes from './Reports.module.css';
+import { Link } from "react-router-dom";
 
    
 const Reports = () =>{
@@ -50,6 +52,7 @@ const Reports = () =>{
                 <main className="container py-5">
                     {isLoading && <Spinner />}
                     {reports.map(item=> <ReportCard key={item.id} item={item} setDeletedItem={setDeletedItem} deletedItem={deletedItem} />)}
+                    <Link to='/reports/create-report'><i className={`far fa-plus-square fa-4x ${classes['add']}`}></i></Link>
                 </main>
             </div>)}
         </Fragment>

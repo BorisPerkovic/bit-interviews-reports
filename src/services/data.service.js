@@ -36,7 +36,7 @@ class DataService {
     return data;
   }
 
-  async deleteReport(id,reports){
+  async deleteReport(id){
     const header = this.headerDELETE();
     const response = await fetch(REPORTS_URL + '/' + id, header);
     authService.isTokenExpired(response);
