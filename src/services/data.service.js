@@ -20,6 +20,18 @@ class DataService {
     return requestOptions;
   }
 
+  headerPOST(props) {
+    const tokenObj = localStorage.getItem("token");
+    const requestOptions = {
+      method: "POST",
+      headers: { Authorization: `Bearer ${tokenObj}` },
+      body:props
+    };
+    return requestOptions;
+  }
+
+
+
   async getCandidates() {
     const header = this.headerGET();
     const response = await fetch(CANDIDATES_URL, header);
@@ -78,6 +90,19 @@ class DataService {
     const data = await response.json();
     return data;
   }
+
+
+  async createNewReport(props) {
+    console.log(props)
+   const payload=JSON.stringify(props);
+    const header = this.headerPOST(payload);
+    const response = await fetch(REPORTS_URL, header);
+    const data = await response.json();
+
+    console.log(data)
+     return data;
+  }
+
 }
 
 export const dataService = new DataService();
