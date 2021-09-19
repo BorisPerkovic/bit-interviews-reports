@@ -1,12 +1,15 @@
 import React, { useState, useRef } from "react";
+import LogInFormValidaion from "../../utils/FormsValidation/LoginFormValidation/LoginFormValdiation";
 import { authService } from "../../services/auth.service";
 import Spinner from "../Spinner/Spinner";
 
 
 import classes from "./LoginForm.module.css";
 
+/* Log in form JSX Component */
 const LoginForm = () => {
 
+    /* setting states */
     const [formValidaiton, setFormValidaiton] = useState({
         email : true,
         password: true
@@ -14,29 +17,37 @@ const LoginForm = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
+    /* getting data from input fields using useRef hook */
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
     
+    /* function that is activate on log in button */
     const onSubmitHandler = (event) => {
         event.preventDefault();
         setErrorMessage("");
+
+        /* getting data values from refs and creating instance for form valdiation */
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
+        const formValid = new LogInFormValidaion(enteredEmail, enteredPassword);
 
-        const emailValid = enteredEmail.trim() !== "" && enteredEmail.includes("@");
-        const passwordValid = enteredPassword.trim() !== "";
-
+        /* setting new states for input fields */
         setFormValidaiton({
-            email: emailValid,
-            password: passwordValid
+            email: formValid.emailIsValid(),
+            password: formValid.passwordIsValid()
         });
 
-        const formIsValid = emailValid && passwordValid;
-
-        if(!formIsValid) {
+        /* check if form is valid - if it is not, display messages and stop script */
+        if(!formValid.formIsValid()) {
             return;
         }
         
+        /* authentication service for log in: 
+            -check if users datas from input are match with database
+            -creating and set accesToken,
+            -geting message response if email or password are wrong,
+            -redirect user to landing page if everything is good   
+        */
        authService.requestLogin(setIsLoading, setErrorMessage, enteredEmail, enteredPassword);
 
     };
@@ -59,7 +70,7 @@ const LoginForm = () => {
                     </div>
                     {isLoading && <Spinner />}
                     <div className="py-3"><p className="text-center text-danger">{errorMessage}</p></div>
-                    <button type="submit" className="btn btn-primary form-control mt-3">Submit</button>
+                    <button type="submit" className="btn btn-primary form-control mt-3">Log In</button>
                 </form>
             </div>
             </div>

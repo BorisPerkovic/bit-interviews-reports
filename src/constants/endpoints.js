@@ -5,6 +5,11 @@ export const COMPANIES_URL = "http://localhost:3333/api/companies";
 export const LOGIN_URL = "http://localhost:3333/login";
 export const BASE_URL = "http://localhost:3000/";
 
+/* select options for create report -phase, status */
+export const OPTIONS_PHASE = ['cv','hr','tech','final'];
+export const OPTIONS_STATUS = ['passed','declined'];
+
+/* sidebar list in create report */
 export const CREATE_REPORT_SIDE_BAR = [
   "Select Candidate",
   "Select Company",
