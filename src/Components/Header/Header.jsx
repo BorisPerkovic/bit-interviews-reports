@@ -1,14 +1,14 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
   const path = location.pathname !== "/login";
+  const history = useHistory();
 
   const logOut = () => {
     localStorage.removeItem("token");
-    window.location.assign("/login");
+    history.push("/login");
   };
 
   return (

@@ -1,75 +1,68 @@
-import React,{useState,useRef} from "react";
+import React,{ useState , useRef, Fragment } from "react";
 import { useHistory } from "react-router";
-import { Fragment } from "react/cjs/react.production.min";
 import { dataService } from "../../../../../../services/data.service";
+import { OPTIONS_PHASE, OPTIONS_STATUS } from "../../../../../../constants/endpoints";
+import NewReportFormValidation from "../../../../../../utils/FormsValidation/NewReportFormValdiaiton/NewReportFormValdiaiton";
 
-
-const FillReportDetails = ({prevPage,pickFillReportHandler,newReport}) => {
-  const optionsPhase=['cv','hr','tech','final'];
-  const optionStatus=['passed','declined'];
+/* FillReportDetails JSX Component */
+const FillReportDetails = ({ prevPage, pickFillReportHandler, newReport}) => {
   const history = useHistory();
 
-  
-  const [formValidaiton, setFormValidaiton] = useState({
-    date : true,
-    phase: true,
-    status: true,
-    notes: true
+  /* form fields states */
+  const [formValidaiton, setFormValidation] = useState({
+      date : true,
+      phase: true,
+      status: true,
+      notes: true
+  });
 
-});
-const [errorMessage, setErrorMessage] = useState("");
-const [isLoading, setIsLoading] = useState(false);
+  /* getting data from fields using useRef hook */
+  const dateInputRef = useRef();
+  const phaseInputRef = useRef();
+  const statusInputRef = useRef();
+  const notesInputRef = useRef();
 
-const dateInputRef = useRef();
-const phaseInputRef = useRef();
-const statusInputRef = useRef();
-const notesInputRef = useRef();
+  /* function that is activate on submit button */
+  const onSubmitHandler = () => {
 
-const onSubmitHandler = (event) => {
-    setErrorMessage("");
+    /* getting data values from refs and creating instance for form valdiation */
     const enteredDate = dateInputRef.current.value;
     const enteredPhase = phaseInputRef.current.value;
     const enteredStatus = statusInputRef.current.value;
     const enteredNotes = notesInputRef.current.value;
+    const formValid = new NewReportFormValidation(enteredDate, enteredPhase, enteredStatus, enteredNotes);
 
-    const dateValid = new Date(enteredDate).getDate() <= new Date().getDate();
-    const phaseValid = enteredPhase !== '0';
-    const statusValid = enteredStatus !== '0';
-    const notesValid = enteredNotes.trim() !== ''; 
-
-
-    setFormValidaiton({
-      date : dateValid,
-      phase: phaseValid,
-      status: statusValid,
-      notes: notesValid
+    /* setting new states for input fields */
+    setFormValidation({
+      date: formValid.dateIsValid(),
+      phase: formValid.phaseIsValid(),
+      status: formValid.statusIsValid(),
+      notes: formValid.notesIsValid()
     });
 
-    const formIsValid = dateValid && phaseValid && statusValid && notesValid;
-
-    if(!formIsValid) {
+    /* check if form is valid - if it is not, display messages and stop script */
+    if(!formValid.formIsValid()) {
         return;
     }
-   
-    pickFillReportHandler(enteredDate,enteredPhase,enteredStatus,enteredNotes);
+  
+    /* sending data values to body - payload object, send report to database, redirect user to landing page */
+    pickFillReportHandler(enteredDate, enteredPhase, enteredStatus, enteredNotes);
     createReport();
-    history.push('/')
+    history.push("/");
+ 
+  };
 
-    
-};
-
-const createReport=async()=>{
- const report = await dataService.createNewReport(newReport); 
-  
-  return report;
-  
-}
+  const createReport = async () => {
+    const report = await dataService.createNewReport(newReport); 
+    return report;
+  };
 
 
   return (
     <Fragment>
     <div className='container select-wrapper'>
       <div className="row">
+
          <div className="col-md-4">
           <label htmlFor="date-picker">Interview date</label>
           <input type="date" id='date-picker' className='form-control' ref={dateInputRef}/>
@@ -77,55 +70,34 @@ const createReport=async()=>{
          </div>
 
          <div className="col-md-4">
-
           <label htmlFor="phase-select">Phase</label>
-          <select name="" id="phase-select" className='form-control' ref={phaseInputRef}>
+          <select className="form-select" id="phase-select" ref={phaseInputRef}>
             <option value='0'> Select phase </option>
-           {optionsPhase.map((option,index)=> <option value={option} key={index}> {option}</option>)}
-            
+            {OPTIONS_PHASE.map((option,index)=> <option value={option} key={index}> {option}</option>)}  
           </select>
           {!formValidaiton.phase && <div id="emailHelp" className="form-text text-danger">Please select valid phase!</div>}
          </div>
+
          <div className="col-md-4">
           <label htmlFor="status-select">Status</label>
-           <select name="" id="status-select" className='form-control' ref={statusInputRef}>
+          <select className="form-select" id="status-select" ref={statusInputRef}>
             <option value='0'> Select status </option>
-           {optionStatus.map((option,index)=> <option value={option} key={index}> {option}</option>)}
-            
+            {OPTIONS_STATUS.map((option,index)=> <option value={option} key={index}> {option}</option>)}
            </select>
            {!formValidaiton.status && <div id="emailHelp" className="form-text text-danger">Please select valid status!</div>}
-
          </div>
-
       </div>
       <div className='col-sm-12 mt-4'>
       <label htmlFor="text-area">Notes</label>
       <textarea name="" id="text-area" cols="30" rows="10" className='form-control' ref={notesInputRef}></textarea>
       {!formValidaiton.notes && <div id="emailHelp" className="form-text text-danger">Please insert notes!</div>}
       </div>
-
     </div>
 
-    <div className="d-flex justify-content-end">
-        <button
-        
-          // onClick={nextPage}
-          className="btn btn-success mt-3 me-2"
-        >
-          Back
-        </button>
-      </div>
-
-      <div className="d-flex justify-content-end">
-        <button
-          onClick={onSubmitHandler}
-          className="btn btn-success mt-3 me-2"
-        >
-          Save
-        </button>
-      </div>
-
-   
+    <div className="d-flex justify-content-between">
+        <button onClick={prevPage} className="btn btn-primary mt-3 ms-2">Back</button>
+        <button onClick={onSubmitHandler} className="btn btn-success mt-3 me-2">Save</button>
+    </div>
   </Fragment>
   );
 };
