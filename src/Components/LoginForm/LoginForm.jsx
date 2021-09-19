@@ -43,9 +43,9 @@ const LoginForm = () => {
         }
         
         /* authentication service for log in: 
-            -check if users datas from input are match with database
-            -creating and set accesToken,
+            -check if users datas from input are match with database,
             -geting message response if email or password are wrong,
+            -creating and set accesToken,
             -redirect user to landing page if everything is good   
         */
        authService.requestLogin(setIsLoading, setErrorMessage, enteredEmail, enteredPassword);

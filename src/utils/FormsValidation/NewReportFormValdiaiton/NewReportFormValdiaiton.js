@@ -15,45 +15,31 @@ class NewReportFormValidation {
   /* check if chosen date is in valid time - cannot be in future */
   dateIsValid () {
     const dateValid = new Date(this.date).getDate() <= new Date().getDate();
-    if(dateValid) {
-      return true;
-    }
-    return false;
+    return dateValid;
   };
 
   /* check if phase select has been selected */
   phaseIsValid () {
     const phaseValid = this.phase !== "0";
-    if(phaseValid) {
-      return true;
-    }
-    return false;
+    return phaseValid;
   };
 
   /* check if status select has been selected */
   statusIsValid () {
     const statusValid = this.status !== "0";
-    if(statusValid) {
-      return true;
-    }
-    return false;
+    return statusValid;
   };
 
   /* check if notes textarea is valid */
   notesIsValid () {
-    const notesValid = this.notes.trim() !== ""; 
-    if(notesValid) {
-      return true;
-    }
-    return false;
+    const notesValid = this.notes.trim() !== "";
+    return notesValid;
   };
 
   /* check if form is valid - date, phase, status, textarea are required */
   formIsValid () {
-    if(this.dateIsValid() && this.phaseIsValid() && this.statusIsValid() && this.notesIsValid()) {
-      return true;
-    }
-    return false;
+    const vaildForm = this.dateIsValid() && this.phaseIsValid() && this.statusIsValid() && this.notesIsValid();
+    return vaildForm;
   };
 
 };
