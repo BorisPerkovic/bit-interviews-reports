@@ -1,12 +1,11 @@
 import React, { useState, useEffect, Fragment } from "react";
-import classes from "./CandidateReports.module.css";
-import { authService } from "../../../services/auth.service";
-import { dataService } from "../../../services/data.service";
 import Spinner from "../../Spinner/Spinner";
 import ModalReports from "../../Modal/ModalReports/ModalReports";
+import { authService } from "../../../services/auth.service";
+import { dataService } from "../../../services/data.service";
 import { formateDate } from "../../../utils/date-function";
 import { candidateService } from "../MainPage/services/candidate.service";
-
+import classes from "./CandidateReports.module.css";
 const CandidateReports = (props) => {
   const [candidate, setCandidate] = useState({});
   const [isLoading, setIsLoading] = useState(true);

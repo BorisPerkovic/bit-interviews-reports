@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 /* SearchBar component includes in MainPage component */
-const SearchBar = ({ getSearchValue, reset}) => {
-
+const SearchBar = ({ getSearchValue, searchBarTitle }) => {
   const [searchValue, setSearchValue] = useState("");
+  const [title, setTitle] = useState("");
 
   const inputHandler = (event) => {
     getSearchValue(event.target.value);
@@ -11,23 +11,16 @@ const SearchBar = ({ getSearchValue, reset}) => {
     console.log("event. target", event.target.value);
   };
 
-  const resetInputView = () => {
-    if(reset){
-      setSearchValue("");
-    }
-  }
-
-  useEffect(resetInputView, [reset]);
-  
-
-  console.log("iy komponente", searchValue)
+  useEffect(() => {
+    setTitle(searchBarTitle);
+  }, [searchBarTitle]);
 
   return (
     <nav className="navbar navbar-light bg-light border-bottom border-dark">
       <div className="container  py-4">
         <div className="row w-100">
           <div className="col-md-9">
-            <h2>Navbar</h2>
+            <h2>{title}</h2>
           </div>
           <div className="col-md-3 px-0">
             <input
