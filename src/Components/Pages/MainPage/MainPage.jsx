@@ -7,6 +7,8 @@ import SearchBar from "../../SearchBar/SearchBar";
 import { searchBarService } from "../../SearchBar/SearchBar.service";
 import { dataService } from "../../../services/data.service";
 import { candidateService } from "./services/candidate.service";
+import classes from './MainPage.module.css';
+
 /* MainPage component */
 const MainPage = () => {
   /* creating necessary states */
@@ -64,12 +66,12 @@ const MainPage = () => {
   return (
     <Fragment>
       {logIn && (
-        <div className="container main-mb">
+        <div className="container g-0 main-mb">
           <SearchBar
             getSearchValue={getSearchValue}
             searchBarTitle={searchBarTitle}
           />
-          <main className="container py-5">
+          <main className= {`container ${classes.main} py-51`}>
             {isLoading && <Spinner />}
             <div className=" row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5">
               {searchedCandidates.map((candidate) => (

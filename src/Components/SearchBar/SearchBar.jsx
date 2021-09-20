@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import classes from './SearchBar.module.css';
 
 /* SearchBar component includes in MainPage component */
 const SearchBar = ({ getSearchValue, searchBarTitle }) => {
@@ -16,7 +17,7 @@ const SearchBar = ({ getSearchValue, searchBarTitle }) => {
   }, [searchBarTitle]);
 
   return (
-    <nav className="navbar navbar-light bg-light border-bottom border-dark">
+    <nav className={`navbar border-bottom border-dark ${classes.navBar}`}>
       <div className="container  py-4">
         <div className="row w-100">
           <div className="col-md-9">
