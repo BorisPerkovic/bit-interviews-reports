@@ -15,21 +15,25 @@ const Header = () => {
   return (
     <Fragment>
       {path && (
-        <header className={`container d-flex justify-content-between align-items-center p-4 ${classes.header}`}>
+        <header className={`container d-flex align-items-center p-4 ${classes.header} flex-wrap justify-content-sm-center justify-content-md-between justify-content-center `}>
           <h1>Interview Reports</h1>
-          <Link to="/" className = {classes.link}>
-            <button type="button" className={`btn btn-info ${classes.button}`}>
+          <div className={`d-flex flex-wrap justify-content-sm-center`}>
+           <Link to="/" className = {`mx-1 ${classes.link}`}>
+            <button type="button" className={`btn ${classes.button}`} >
               Candidates
             </button>
-          </Link>
-          <Link to="/reports">
-            <button type="button" className="btn btn-info">
+           </Link>
+           <Link to="/reports" className = {`mx-1 ${classes.link}`} >
+            <button type="button" className={`btn  ${classes.button}`}>
               Reports
             </button>
-          </Link>
-          <button onClick={logOut} type="button" className="btn btn-info">
+           </Link>
+           <a href="" onClick={logOut} className={`mx-1 ${classes.link}`}> 
+           <button  type="button" className={`btn ${classes.button}`}>
             Log Out
-          </button>
+           </button>
+           </a>
+          </div>
         </header>
       )}
     </Fragment>

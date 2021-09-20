@@ -17,13 +17,13 @@ const SearchBar = ({ getSearchValue, searchBarTitle }) => {
   }, [searchBarTitle]);
 
   return (
-    <nav className={`navbar border-bottom border-dark ${classes.navBar}`}>
-      <div className="container  py-4">
-        <div className="row w-100">
-          <div className="col-md-9">
+    <nav className={`navbar   ${classes.navBar}`}>
+      <div className="w-100  py-4">
+        <div className="row w-100 mx-0">
+          <div className={`col-sm-6 col-md-8 px-3 ${classes.title}`}>
             <h2>{title}</h2>
           </div>
-          <div className="col-md-3 px-0">
+          <div className="col-sm-6 col-md-4 px-3">
             <input
               className="ms-auto form-control me-0 rounded"
               value={searchValue}

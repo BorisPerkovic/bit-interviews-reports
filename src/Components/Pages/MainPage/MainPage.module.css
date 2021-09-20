@@ -1,3 +1,10 @@
 .main{
     background-color: #F4F9F4;
+    
+}
+
+
+.cardHolder a div:hover{
+    background-color: #b8b7b7;
+    color: white;
 }

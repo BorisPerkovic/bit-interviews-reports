@@ -1,15 +1,31 @@
 .header{
     background-color: #C4E3CB;
+    color: #616161;
 }
-.header button{
+
+.link{
     background-color: #8AAE92;
+    font-weight: 800;
+    border-radius: 5px;
+    color:#4e4d4d;
 }
+ 
+
 .button:hover{
     background-color: #bbd1bb;
+    color:teal
 }
-.button:active{
-    background-color: #bbd1bb;
-}
-a{
-    color: transparent;
-}
+
+
+@media (max-width: 576px) { 
+
+  .link{
+      width: 100%;
+     margin-bottom: 0.5em;
+  }
+
+  .button{
+      width: 100%;
+  }
+
+ }

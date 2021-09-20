@@ -1,3 +1,19 @@
 .navBar{
     background-color: #ebf5eb;
+    width: 100%;
+    border-bottom: 1px solid #616161;
+}
+
+.title h2{
+    color: #616161;
+}
+
+
+@media (max-width: 576px) { 
+  
+ .title{
+     text-align: center;
+ }
+
+
 }

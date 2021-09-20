@@ -25,7 +25,7 @@ body {
 }
 
 .main-mb {
-  margin-bottom: 150px;
+  margin-bottom: 100px;
 }
 .imgHolder img {
   border-radius: 50%;
@@ -46,3 +46,10 @@ body {
 .candidate-report-item {
   cursor: pointer;
 }
+
+a{
+  text-decoration: none;
+  
+}
+
+

@@ -6,7 +6,7 @@ import classes from "./CandidateCard.module.css";
 const CandidateCard = ({ candidate }) => {
   return (
     <div className="col">
-      <div className="card shadow">
+      <div className={`card shadow py-2 ${classes.card}`}>
         <div className="imgHolder">
           <img src={candidate.image} className="card-img-top  " alt="Avatar" />
         </div>
