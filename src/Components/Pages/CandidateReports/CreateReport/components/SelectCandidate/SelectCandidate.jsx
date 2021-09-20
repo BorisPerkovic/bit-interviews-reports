@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { dataService } from "../../../../../../services/data.service";
 import { candidateService } from "../../../../MainPage/services/candidate.service";
 import CandidateSelectItem from "./CandidateSelectItem";
-import { searchBarService } from "../../../../MainPage/SearchBar/SearchBar.service";
+import { searchBarService } from "../../../../../SearchBar/SearchBar.service";
 
 const SelectCandidate = ({ pickUserHandler, nextPage, searchValue }) => {
   const [candidateList, setCandidateList] = useState([]);
@@ -19,7 +19,7 @@ const SelectCandidate = ({ pickUserHandler, nextPage, searchValue }) => {
   };
 
   const searchCandidates = () => {
-    const filteredCandidates = searchBarService.filterNews(
+    const filteredCandidates = searchBarService.filterByItemName(
       candidateList,
       searchValue
     );
@@ -33,6 +33,7 @@ const SelectCandidate = ({ pickUserHandler, nextPage, searchValue }) => {
   useEffect(() => {
     getCandidates();
   }, []);
+
   useEffect(searchCandidates, [candidateList, searchValue]);
 
   return (

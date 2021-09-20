@@ -1,6 +1,7 @@
 import borisImg from "../assets/boris.jpg";
 import tanjaImg from "../assets/tanja.jpg";
 import marinaImg from "../assets/marina.jpg";
+import aleksandarImg from "../assets/aleksandar.jpg";
 
 /* API endpoint for candidates */
 export const CANDIDATES_URL = "http://localhost:3333/api/candidates";
@@ -25,9 +26,9 @@ export const DEVELOPER_TEAM = [
 
   {
      name: "Aleksandar Biševac",
-     image: borisImg,
+     image: aleksandarImg,
      summary: {
-      text: "Jere ...",
+      text: "Self-motivated and passionate Front End Developer, looking forward to making first steps in IT Industry. Also, beer master, photographer, philosophy enthusiast, and nature lover.",
       loader: ""
     },
      github: "https://github.com/AleksandarBisevac",

@@ -7,7 +7,6 @@ import FillReportDetails from "./components/FillReportDetails/FillReportDetails"
 
 export const CreateReport = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [ reset, setReset ] = useState(false);
   const [switchValue, setSwitchValue] = useState(1);
   const [newReport, setNewReport] = useState({
     candidateId: null,
@@ -19,6 +18,7 @@ export const CreateReport = () => {
     status: null,
     note: null,
   });
+  const searchBarTitle = "Create report";
 
   const renderSwitch = () => {
     switch (switchValue) {
@@ -31,14 +31,23 @@ export const CreateReport = () => {
           />
         );
       case 2:
-        return <SelectCompany
-                  searchValue={searchValue}
-                  nextPage={nextPage}
-                  prevPage={prevPage}
-                  pickCompanyHandler={pickCompanyHandler} 
-            />;
+        return (
+          <SelectCompany
+            searchValue={searchValue}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            pickCompanyHandler={pickCompanyHandler}
+          />
+        );
       case 3:
-        return <FillReportDetails searchValue={searchValue}  prevPage={prevPage}  pickFillReportHandler={pickFillReportHandler} newReport={newReport} />;
+        return (
+          <FillReportDetails
+            searchValue={searchValue}
+            prevPage={prevPage}
+            pickFillReportHandler={pickFillReportHandler}
+            newReport={newReport}
+          />
+        );
       default:
         return "";
     }
@@ -57,36 +66,43 @@ export const CreateReport = () => {
     setNewReport({ ...newReport, companyId, companyName });
   };
 
-  const pickFillReportHandler= (interviewDate,phase,status,note)=>{
-    setNewReport({...newReport,interviewDate:new Date(interviewDate),phase,status,note})
-  }
+  const pickFillReportHandler = (interviewDate, phase, status, note) => {
+    setNewReport({
+      ...newReport,
+      interviewDate: new Date(interviewDate),
+      phase,
+      status,
+      note,
+    });
+  };
 
   const nextPage = () => {
     setSwitchValue(switchValue + 1);
-    resetInputHandler();
   };
 
   const prevPage = () => {
     setSwitchValue(switchValue - 1);
-    resetInputHandler();
   };
 
-  const resetInputHandler = () => {
-    setReset(true);
-    setSearchValue("");
-  };
-
-  useEffect(resetInputHandler, [switchValue]);
-
-  
+  useEffect(() => {
+    getSearchValue("");
+  }, [switchValue]);
 
   return (
     <div className="container-fluid main-mb">
       <div className="container">
-        {switchValue!==3 &&<SearchBar getSearchValue={getSearchValue} reset={reset} />}
+        {switchValue !== 3 && (
+          <SearchBar
+            getSearchValue={getSearchValue}
+            searchBarTitle={searchBarTitle}
+          />
+        )}
         <div className="row">
           <div className="col-md-4 px-2 my-4 border-end border-dark">
-            <CreateReportSideBar switchValue={switchValue} candidate={newReport} />
+            <CreateReportSideBar
+              switchValue={switchValue}
+              candidate={newReport}
+            />
           </div>
           <div className="col-md-8 px-2 my-4">{renderSwitch()}</div>
         </div>

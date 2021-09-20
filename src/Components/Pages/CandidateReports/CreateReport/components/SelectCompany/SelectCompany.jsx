@@ -1,24 +1,30 @@
 import React, { useState, useEffect, Fragment } from "react";
 import CompanySelectItem from "./CompanySelectItem";
-import {Company} from "../../../../../../entities/Company";
-import { searchBarService } from "../../../../MainPage/SearchBar/SearchBar.service";
+import { Company } from "../../../../../../entities/Company";
+import { searchBarService } from "../../../../../SearchBar/SearchBar.service";
 import { dataService } from "../../../../../../services/data.service";
 
-const SelectCompany = ({ searchValue, nextPage, prevPage, pickCompanyHandler }) => {
-
+const SelectCompany = ({
+  searchValue,
+  nextPage,
+  prevPage,
+  pickCompanyHandler,
+}) => {
   const [companyList, setCompanyList] = useState([]);
   const [filterCompanyList, setFilterCompanyList] = useState([]);
   const [activeCompany, setActiveCompany] = useState(null);
 
   const getCompaniesList = async () => {
     const response = await dataService.getCompanies();
-    const companyArray = response.filter(param => param.name).map((obj) => new Company(obj.id, obj.name, obj.email));
+    const companyArray = response
+      .filter((param) => param.name)
+      .map((obj) => new Company(obj.id, obj.name, obj.email));
     setCompanyList(companyArray);
     setFilterCompanyList(companyArray);
   };
 
   const searchCompanies = () => {
-    const filterCompanies = searchBarService.filterNews(
+    const filterCompanies = searchBarService.filterByItemName(
       companyList,
       searchValue
     );
@@ -36,22 +42,19 @@ const SelectCompany = ({ searchValue, nextPage, prevPage, pickCompanyHandler }) 
 
   return (
     <Fragment>
-    <div className="row px-4 py-2 select-wrapper">
-      {filterCompanyList.map(company => (
-        <CompanySelectItem
-        company={company}
-        key={company.id}
-        pickCompanyHandler={pickCompanyHandler}
-        isActive={activeCompany === company.id}
-        setActive={setActive}
-      />)
-      )}
-    </div>
-    <div className="d-flex justify-content-between align-items-center">
-        <button
-          onClick={prevPage}
-          className="btn btn-primary mt-3 ms-2"
-        >
+      <div className="row px-4 py-2 select-wrapper">
+        {filterCompanyList.map((company) => (
+          <CompanySelectItem
+            company={company}
+            key={company.id}
+            pickCompanyHandler={pickCompanyHandler}
+            isActive={activeCompany === company.id}
+            setActive={setActive}
+          />
+        ))}
+      </div>
+      <div className="d-flex justify-content-between align-items-center">
+        <button onClick={prevPage} className="btn btn-primary mt-3 ms-2">
           Back
         </button>
         <button
@@ -61,8 +64,8 @@ const SelectCompany = ({ searchValue, nextPage, prevPage, pickCompanyHandler }) 
         >
           Next
         </button>
-    </div>
-    </Fragment>    
+      </div>
+    </Fragment>
   );
 };
 

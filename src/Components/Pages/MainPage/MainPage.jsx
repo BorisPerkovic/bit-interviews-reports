@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import CandidateCard from "./CandidateCard/CandidateCard";
 import Spinner from "../../Spinner/Spinner";
 import { authService } from "../../../services/auth.service";
-import SearchBar from "./SearchBar/SearchBar";
-import { searchBarService } from "./SearchBar/SearchBar.service";
+import SearchBar from "../../SearchBar/SearchBar";
+import { searchBarService } from "../../SearchBar/SearchBar.service";
 import { dataService } from "../../../services/data.service";
 import { candidateService } from "./services/candidate.service";
-
 /* MainPage component */
 const MainPage = () => {
   /* creating necessary states */
@@ -16,7 +15,7 @@ const MainPage = () => {
   const [logIn, setLogIn] = useState(false);
   const [searchedCandidates, setSearchedCandidates] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-
+  const searchBarTitle = "Candidates";
   /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
   const isLogedIn = () => {
     const token = authService.getToken();
@@ -32,10 +31,9 @@ const MainPage = () => {
   const getCandidates = async () => {
     const response = await dataService.getCandidates();
 
-     const candidateArray = candidateService.filterCandidate(response)
-     .map((obj) => 
-      candidateService.createCandidate(obj) 
-    );
+    const candidateArray = candidateService
+      .filterCandidate(response)
+      .map((obj) => candidateService.createCandidate(obj));
     setCandidates(candidateArray);
     setSearchedCandidates(candidates);
     setIsLoading(false);
@@ -47,7 +45,7 @@ const MainPage = () => {
   };
   /* function to set searched candidates and display resoults */
   const searchCandidates = () => {
-    const filteredCandidates = searchBarService.filterNews(
+    const filteredCandidates = searchBarService.filterByItemName(
       candidates,
       searchValue
     );
@@ -67,7 +65,10 @@ const MainPage = () => {
     <Fragment>
       {logIn && (
         <div className="container main-mb">
-          <SearchBar getSearchValue={getSearchValue} />
+          <SearchBar
+            getSearchValue={getSearchValue}
+            searchBarTitle={searchBarTitle}
+          />
           <main className="container py-5">
             {isLoading && <Spinner />}
             <div className=" row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5">
