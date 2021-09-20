@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import CandidateCard from "./CandidateCard/CandidateCard";
 import Spinner from "../../Spinner/Spinner";
 import { authService } from "../../../services/auth.service";
-import SearchBar from "./SearchBar/SearchBar";
-import { searchBarService } from "./SearchBar/SearchBar.service";
+import SearchBar from "../../SearchBar/SearchBar";
+import { searchBarService } from "../../SearchBar/SearchBar.service";
 import { dataService } from "../../../services/data.service";
 import { candidateService } from "./services/candidate.service";
 
@@ -32,10 +32,9 @@ const MainPage = () => {
   const getCandidates = async () => {
     const response = await dataService.getCandidates();
 
-     const candidateArray = candidateService.filterCandidate(response)
-     .map((obj) => 
-      candidateService.createCandidate(obj) 
-    );
+    const candidateArray = candidateService
+      .filterCandidate(response)
+      .map((obj) => candidateService.createCandidate(obj));
     setCandidates(candidateArray);
     setSearchedCandidates(candidates);
     setIsLoading(false);
@@ -47,7 +46,7 @@ const MainPage = () => {
   };
   /* function to set searched candidates and display resoults */
   const searchCandidates = () => {
-    const filteredCandidates = searchBarService.filterNews(
+    const filteredCandidates = searchBarService.filterByItemName(
       candidates,
       searchValue
     );
