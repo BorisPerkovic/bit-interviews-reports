@@ -16,6 +16,14 @@
   color: #000;
 }
 
-.modal a:hover {
-  color: rgba(0, 0, 0, 0.9);
+.linkedin a:hover {
+  color: #0a66c2;
+}
+
+.github a:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.website a:hover {
+  color: red;
 }

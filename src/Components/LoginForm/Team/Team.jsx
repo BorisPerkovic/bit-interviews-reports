@@ -4,6 +4,7 @@ import TeamCards from "./TeamCards/TeamCards";
 
 import classes from "./Team.module.css";
 
+/* Developer Team JSX component  */
 const Team = () => {
   return (
     <div className={`row vh-100 d-flex justify-content-center align-content-center ${classes["team-text"]}`}>
