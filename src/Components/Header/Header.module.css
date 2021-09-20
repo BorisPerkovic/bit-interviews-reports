@@ -1,0 +1,15 @@
+.header{
+    background-color: #C4E3CB;
+}
+.header button{
+    background-color: #8AAE92;
+}
+.button:hover{
+    background-color: #bbd1bb;
+}
+.button:active{
+    background-color: #bbd1bb;
+}
+a{
+    color: transparent;
+}

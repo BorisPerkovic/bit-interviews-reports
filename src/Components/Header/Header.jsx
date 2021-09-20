@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
+import classes from './Header.module.css';
 
 const Header = () => {
   const location = useLocation();
@@ -14,10 +15,10 @@ const Header = () => {
   return (
     <Fragment>
       {path && (
-        <header className="container d-flex justify-content-between align-items-center p-4">
+        <header className={`container d-flex justify-content-between align-items-center p-4 ${classes.header}`}>
           <h1>Interview Reports</h1>
-          <Link to="/">
-            <button type="button" className="btn btn-info">
+          <Link to="/" className = {classes.link}>
+            <button type="button" className={`btn btn-info ${classes.button}`}>
               Candidates
             </button>
           </Link>
