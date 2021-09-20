@@ -1,6 +1,6 @@
-import { Candidate } from "../../../../entities/Candidate";
+import { Candidate } from "../../entities/Candidate";
 
-class CandidateService {
+class CandidateMapper {
   constructor() {}
 
   createCandidate(obj) {
@@ -52,9 +52,8 @@ class CandidateService {
   }
 
   filterCandidate(arr) {
-    return arr.filter(item => item.name);
+    return arr.filter((item) => item.name);
   }
-  
 }
 
-export const candidateService = new CandidateService();
+export const candidateMapper = new CandidateMapper();

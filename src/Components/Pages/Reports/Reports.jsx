@@ -1,12 +1,14 @@
 import React, { useEffect, useState, Fragment } from "react";
 import ReportCard from "./ReportCard/ReportCard";
 import SearchBar from "../../SearchBar/SearchBar";
-import { searchBarService } from "../../SearchBar/SearchBar.service";
 import Spinner from "../../Spinner/Spinner";
-import classes from "./Reports.module.css";
-import { dataService } from "../../../services/data.service";
-import { authService } from "../../../services/auth.service";
+
+import { searchBarService } from "../../SearchBar/SearchBar.service";
+import { reportsCommunicator } from "../../../communicators/Reports/ReportsCommunicator";
+import { tokenService } from "../../../services/Token.service";
 import { Link } from "react-router-dom";
+
+import classes from "./Reports.module.css";
 
 const Reports = () => {
   const [reports, setReports] = useState([]);
@@ -18,7 +20,7 @@ const Reports = () => {
   const searchBarTitle = "Reports";
   /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
   const isLogedIn = () => {
-    const token = authService.getToken();
+    const token = tokenService.getToken();
     if (!token) {
       window.location.assign("http://localhost:3000/login");
       return false;
@@ -28,7 +30,7 @@ const Reports = () => {
   };
 
   const getReports = async () => {
-    const response = await dataService.getReports();
+    const response = await reportsCommunicator.getReports();
     console.log(response);
     setReports(response);
     console.log("Reports", reports);

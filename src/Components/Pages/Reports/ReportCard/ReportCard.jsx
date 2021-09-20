@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { formateDate } from "../../../../utils/date-function.js";
 import ModalReports from "../../../Modal/ModalReports/ModalReports.jsx";
-import { dataService } from "../../../../services/data.service.js";
+import { reportsCommunicator } from "../../../../communicators/Reports/ReportsCommunicator";
 
 import classes from "./ReportCard.module.css";
 
@@ -19,7 +19,7 @@ const ReportCard = ({ report, setDeletedReport, deletedReport }) => {
   };
 
   const deleteOneReport = (report) => {
-    dataService.deleteReport(report.id);
+    reportsCommunicator.deleteReport(report.id);
     setDeletedReport(!deletedReport);
   };
 
