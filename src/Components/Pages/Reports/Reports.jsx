@@ -15,7 +15,7 @@ const Reports = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [deletedReport, setDeletedReport] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-
+  const searchBarTitle = "Reports";
   /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
   const isLogedIn = () => {
     const token = authService.getToken();
@@ -58,7 +58,10 @@ const Reports = () => {
     <Fragment>
       {logIn && (
         <div className="container main-mb">
-          <SearchBar getSearchValue={getSearchValue} />
+          <SearchBar
+            getSearchValue={getSearchValue}
+            searchBarTitle={searchBarTitle}
+          />
           <main className="container py-5">
             {isLoading && <Spinner />}
             {searchedReports.map((report) => (

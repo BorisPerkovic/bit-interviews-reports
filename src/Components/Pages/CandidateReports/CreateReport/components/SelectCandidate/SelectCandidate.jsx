@@ -33,6 +33,7 @@ const SelectCandidate = ({ pickUserHandler, nextPage, searchValue }) => {
   useEffect(() => {
     getCandidates();
   }, []);
+
   useEffect(searchCandidates, [candidateList, searchValue]);
 
   return (
