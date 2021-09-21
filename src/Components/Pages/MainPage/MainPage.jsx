@@ -2,12 +2,12 @@ import React, { useEffect, useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 import CandidateCard from "./CandidateCard/CandidateCard";
 import Spinner from "../../Spinner/Spinner";
-import { authService } from "../../../services/auth.service";
+import { tokenService } from "../../../services/Token.service";
 import SearchBar from "../../SearchBar/SearchBar";
 import { searchBarService } from "../../SearchBar/SearchBar.service";
-import { dataService } from "../../../services/data.service";
-import { candidateService } from "./services/candidate.service";
 import classes from './MainPage.module.css';
+import { candidateCommunicator } from "../../../communicators/Candidates/CandidateCommunicator";
+import { candidateMapper } from "../../../communicators/Candidates/CandidateMapper";
 
 /* MainPage component */
 const MainPage = () => {
@@ -20,7 +20,7 @@ const MainPage = () => {
   const searchBarTitle = "Candidates";
   /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
   const isLogedIn = () => {
-    const token = authService.getToken();
+    const token = tokenService.getToken();
     if (!token) {
       window.location.assign("http://localhost:3000/login");
       return false;
@@ -31,11 +31,11 @@ const MainPage = () => {
 
   /* function for fetching candidates data from API, put data from API in setCandidates state */
   const getCandidates = async () => {
-    const response = await dataService.getCandidates();
+    const response = await candidateCommunicator.getCandidates();
 
-    const candidateArray = candidateService
+    const candidateArray = candidateMapper
       .filterCandidate(response)
-      .map((obj) => candidateService.createCandidate(obj));
+      .map((obj) => candidateMapper.createCandidate(obj));
     setCandidates(candidateArray);
     setSearchedCandidates(candidates);
     setIsLoading(false);

@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { dataService } from "../../../../../../services/data.service";
-import { candidateService } from "../../../../MainPage/services/candidate.service";
+import { candidateCommunicator } from "../../../../../../communicators/Candidates/CandidateCommunicator";
+import { candidateMapper } from "../../../../../../communicators/Candidates/CandidateMapper";
 import CandidateSelectItem from "./CandidateSelectItem";
 import { searchBarService } from "../../../../../SearchBar/SearchBar.service";
 
@@ -10,10 +10,10 @@ const SelectCandidate = ({ pickUserHandler, nextPage, searchValue }) => {
   const [activeCandidate, setActiveCandidate] = useState(null);
 
   const getCandidates = async () => {
-    const response = await dataService.getCandidates();
-    const candidateArray = candidateService
+    const response = await candidateCommunicator.getCandidates();
+    const candidateArray = candidateMapper
       .filterCandidate(response)
-      .map((obj) => candidateService.createCandidate(obj));
+      .map((obj) => candidateMapper.createCandidate(obj));
     setCandidateList(candidateArray);
     setFilterCandidateList(candidateList);
   };

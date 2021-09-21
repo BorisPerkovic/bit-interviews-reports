@@ -1,6 +1,6 @@
 
 /* login form validation class */
-class LogInFormValidaion {
+class LogInFormValidation {
   constructor( email, password){
     this.email = email;
     this.password = password;
@@ -30,4 +30,4 @@ class LogInFormValidaion {
 
 };
 
-export default LogInFormValidaion;
+export default LogInFormValidation;

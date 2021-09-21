@@ -1,9 +1,13 @@
+<<<<<<< HEAD:src/Components/Pages/MainPage/services/candidate.service.js
 import { getByPlaceholderText } from "@testing-library/dom";
 import { Candidate } from "../../../../entities/Candidate";
 import userPlaceholder from '../../../../assets/user-placeholder.png';
+=======
+import { Candidate } from "../../entities/Candidate";
+import placeholderImg from "../../assets/user-placeholder.png";
+>>>>>>> development:src/communicators/Candidates/CandidateMapper.js
 
-class CandidateService {
-  constructor() {}
+class CandidateMapper {
 
   createCandidate(obj) {
     let validationCounter = 0;
@@ -32,7 +36,11 @@ class CandidateService {
           Math.random() * 80
         )}.jpg`;
       }
+<<<<<<< HEAD:src/Components/Pages/MainPage/services/candidate.service.js
       return userPlaceholder;
+=======
+      return placeholderImg;
+>>>>>>> development:src/communicators/Candidates/CandidateMapper.js
     };
 
     const candidateEmail = obj.email.toLowerCase() || "no email address";
@@ -54,9 +62,8 @@ class CandidateService {
   }
 
   filterCandidate(arr) {
-    return arr.filter(item => item.name);
+    return arr.filter((item) => item.name);
   }
-  
 }
 
-export const candidateService = new CandidateService();
+export const candidateMapper = new CandidateMapper();
