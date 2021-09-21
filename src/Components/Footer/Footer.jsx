@@ -5,6 +5,7 @@ import classes from "./Footer.module.css";
 
 const Footer = () => {
 
+    /* use Location hook for hiding footer in log in component */
     const location = useLocation();
     const path = location.pathname !== "/login";
 
