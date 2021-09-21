@@ -5,6 +5,10 @@ import classes from "./ModalReportOverlay.module.css";
 
 const ModalReportsOverlay = ({ report, onClose }) => {
   
+  /* 
+    -function for closing eport modal on click X button
+    -onClose function is passed as props from single Candidate Report and Report  and triggered here but state is changing in single Candidate Report and Report components
+  */
   const onCloseReportModal = () => {
     onClose(false);
     return false;

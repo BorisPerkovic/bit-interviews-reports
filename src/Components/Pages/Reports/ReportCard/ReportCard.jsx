@@ -1,19 +1,23 @@
-import React, { Fragment, useState } from "react";
-import { formateDate } from "../../../../utils/date-function.js";
+import React, { Fragment, useState  } from "react";
+import {formateDate} from '../../../../utils/date-function.js';
 import ModalReports from "../../../Modal/ModalReports/ModalReports.jsx";
 import { reportsCommunicator } from "../../../../communicators/Reports/ReportsCommunicator";
 
 import classes from "./ReportCard.module.css";
 
 const ReportCard = ({ report, setDeletedReport, deletedReport }) => {
+
+  /* creating state for modal window  */
   const [displayReportModal, setDisplayReportModal] = useState(false);
   const [detailsReportModal, setDetailsReportModal] = useState({});
 
+  /* function for sending data to ModalReportOverlay on click eye icon using Lifting State Up and also changing state to modal be visible */
   const reportModalHandler = (report) => {
     setDetailsReportModal(report);
     setDisplayReportModal(true);
   };
 
+  /* function for changing modal state to be hidden on click X button in modal and backdrop overlay using Lifting State Up */
   const reportModalClose = (param) => {
     setDisplayReportModal(param);
   };
