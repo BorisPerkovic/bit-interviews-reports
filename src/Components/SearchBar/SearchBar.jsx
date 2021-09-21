@@ -17,7 +17,7 @@ const SearchBar = ({ getSearchValue, searchBarTitle }) => {
   }, [searchBarTitle]);
 
   return (
-    <nav className={`navbar   ${classes.navBar}`}>
+    <nav className={`navbar navbar-expand-lg  ${classes.navBar}`}>
       <div className="w-100  py-4">
         <div className="row w-100 mx-0">
           <div className={`col-sm-6 col-md-8 px-3 ${classes.title}`}>

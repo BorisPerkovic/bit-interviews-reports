@@ -73,14 +73,14 @@ const CandidateReports = (props) => {
       {!isLoading && (
         <div className="container main-mb">
           <div className="row pt-4">
-            <div className="col-md-5">
+            <div className="col-md-2">
               <img
                 className="img-fluid"
                 src={candidate.image}
                 alt="Avatar"
               ></img>
             </div>
-            <div className="col-md-7">
+            <div className="col-md-10">
               <div className="row h-50 py-2">
                 <div className="col-md-6">
                   <span>Name:</span>
@@ -94,7 +94,7 @@ const CandidateReports = (props) => {
               <div className="row h-50 py-2">
                 <div className="col-md-6">
                   <span>Email: </span>
-                  <h4 className="p-3">{candidate.email}</h4>
+                  <h4 className="p-3 text-truncate">{candidate.email}</h4>
                 </div>
                 <div className="col-md-6">
                   <span>Education: </span>

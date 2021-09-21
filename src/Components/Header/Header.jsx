@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <Fragment>
       {path && (
-        <header className={`container d-flex align-items-center p-4 ${classes.header} flex-wrap justify-content-sm-center justify-content-md-between justify-content-center `}>
+        <header className={`container-fluid d-flex align-items-center p-4 ${classes.header} flex-wrap justify-content-sm-center justify-content-md-between justify-content-center `}>
           <h1>Interview Reports</h1>
           <div className={`d-flex flex-wrap justify-content-sm-center`}>
            <Link to="/" className = {`mx-1 ${classes.link}`}>

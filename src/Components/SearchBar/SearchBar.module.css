@@ -8,8 +8,14 @@
     color: #616161;
 }
 
-.searchInput{
-    outline: none !important;    
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus .searchInput:focus{   
+        border-color: #8AAE92;
+        box-shadow: 0px 0px 5px 7px rgba(138,174,146,0.75);
+        -webkit-box-shadow: 0px 0px 5px 7px rgba(138,174,146,0.75);
+        -moz-box-shadow: 0px 0px 5px 7px rgba(138,174,146,0.75);
+
+        outline: 0 none;
+        
 }
 
 
