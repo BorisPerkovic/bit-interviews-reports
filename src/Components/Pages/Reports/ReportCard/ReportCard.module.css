@@ -2,3 +2,10 @@
   font-size: 1.3rem;
   cursor: pointer;
 }
+.timesSign{
+  color: #616161;
+}
+.bgColorReport a div:hover{
+  background-color: #b8b7b7;
+  color: white;
+}

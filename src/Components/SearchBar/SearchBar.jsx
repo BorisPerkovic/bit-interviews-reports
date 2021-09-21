@@ -23,7 +23,7 @@ const SearchBar = ({ getSearchValue, searchBarTitle }) => {
           <div className={`col-sm-6 col-md-8 px-3 ${classes.title}`}>
             <h2>{title}</h2>
           </div>
-          <div className="col-sm-6 col-md-4 px-3">
+          <div className={`col-sm-6 col-md-4 px-3 ${classes.searchInput}`}>
             <input
               className="ms-auto form-control me-0 rounded"
               value={searchValue}

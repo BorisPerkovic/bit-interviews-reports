@@ -8,6 +8,11 @@
     color: #616161;
 }
 
+.searchInput:focus{
+    outline: #C4E3CB;
+    
+}
+
 
 @media (max-width: 576px) { 
   

@@ -15,7 +15,7 @@ const ModalReportsOverlay = ({ report, onClose }) => {
       <div className="d-flex justify-content-between align-items-center border-bottom border-dark">
         <h2>{report.candidateName || report[0].candidateName }</h2>
         <p>
-          <i className="fas fa-times-circle" onClick={onCloseReportModal}></i>
+          <i className={`fas fa-times-circle ${classes.timesCircle}`} onClick={onCloseReportModal}></i>
         </p>
       </div>
       <div className="row py-3">

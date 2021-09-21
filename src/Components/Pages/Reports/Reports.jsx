@@ -57,12 +57,12 @@ const Reports = () => {
   return (
     <Fragment>
       {logIn && (
-        <div className="container main-mb">
+        <div className="container main-mb g-0">
           <SearchBar
             getSearchValue={getSearchValue}
             searchBarTitle={searchBarTitle}
           />
-          <main className="container py-5">
+          <main className= "container-fluid py-5">
             {isLoading && <Spinner />}
             {searchedReports.map((report) => (
               <ReportCard

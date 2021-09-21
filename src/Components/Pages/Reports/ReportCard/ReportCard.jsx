@@ -28,7 +28,7 @@ const ReportCard = ({ report, setDeletedReport, deletedReport }) => {
       {displayReportModal && (
         <ModalReports report={detailsReportModal} onClose={reportModalClose} />
       )}
-      <div className="row my-4 py-2 rounded shadow">
+      <div className={`row my-4 py-2 rounded shadow ${classes.bgColorReport}`}>
         <div className="col-sm-3 py-2 px-3 border-end border-dark">
           <h5>{report.companyName}</h5>
           <span>Company</span>
@@ -60,7 +60,7 @@ const ReportCard = ({ report, setDeletedReport, deletedReport }) => {
           <span>
             {" "}
             <i
-              className="fas fa-times"
+              className= {`fas fa-times ${classes.timesSign}`}
               onClick={() => deleteOneReport(report)}
             ></i>{" "}
           </span>

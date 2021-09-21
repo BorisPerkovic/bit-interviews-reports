@@ -1,5 +1,5 @@
 .modal {
-  background-color: #fff;
+  background-color: #dce0dc;
   position: fixed;
   top: 25vh;
   left: 25%;
@@ -10,4 +10,7 @@
 .modal i {
   font-size: 2.5rem;
   cursor: pointer;
+}
+.timesCircle{
+  color: #616161;
 }
