@@ -1,7 +1,6 @@
 import { Candidate } from "../../entities/Candidate";
 
 class CandidateMapper {
-  constructor() {}
 
   createCandidate(obj) {
     let validationCounter = 0;

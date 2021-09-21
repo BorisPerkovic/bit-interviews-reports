@@ -5,12 +5,14 @@ import Spinner from "../../Spinner/Spinner";
 
 import { searchBarService } from "../../SearchBar/SearchBar.service";
 import { reportsCommunicator } from "../../../communicators/Reports/ReportsCommunicator";
+import { reportsMapper } from "../../../communicators/Reports/ReportsMapper";
 import { tokenService } from "../../../services/Token.service";
 import { Link } from "react-router-dom";
 
 import classes from "./Reports.module.css";
 
 const Reports = () => {
+
   const [reports, setReports] = useState([]);
   const [searchedReports, setSearchedReports] = useState([]);
   const [logIn, setLogIn] = useState(false);
@@ -18,6 +20,7 @@ const Reports = () => {
   const [deletedReport, setDeletedReport] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const searchBarTitle = "Reports";
+
   /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
   const isLogedIn = () => {
     const token = tokenService.getToken();
@@ -31,12 +34,12 @@ const Reports = () => {
 
   const getReports = async () => {
     const response = await reportsCommunicator.getReports();
-    console.log(response);
-    setReports(response);
-    console.log("Reports", reports);
+    const reportsArray = response.map(obj => reportsMapper.createReport(obj));
+    setReports(reportsArray);
     setSearchedReports(reports);
     setIsLoading(false);
   };
+
   /* function to get value from child component SearchBar */
   const getSearchValue = (input) => {
     setSearchValue(input);
