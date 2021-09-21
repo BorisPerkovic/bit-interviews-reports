@@ -1,4 +1,5 @@
 import { Candidate } from "../../entities/Candidate";
+import placeholderImg from "../../assets/user-placeholder.png";
 
 class CandidateMapper {
 
@@ -29,7 +30,7 @@ class CandidateMapper {
           Math.random() * 80
         )}.jpg`;
       }
-      return "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png";
+      return placeholderImg;
     };
 
     const candidateEmail = obj.email.toLowerCase() || "no email address";
