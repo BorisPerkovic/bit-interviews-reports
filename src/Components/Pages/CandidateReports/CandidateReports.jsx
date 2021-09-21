@@ -6,6 +6,7 @@ import { tokenService } from "../../../services/Token.service";
 import { candidateCommunicator } from "../../../communicators/Candidates/CandidateCommunicator";
 import { candidateMapper } from "../../../communicators/Candidates/CandidateMapper";
 import { reportsCommunicator } from "../../../communicators/Reports/ReportsCommunicator";
+import { reportsMapper } from "../../../communicators/Reports/ReportsMapper";
 
 import { formateDate } from "../../../utils/date-function";
 
@@ -39,7 +40,8 @@ const CandidateReports = (props) => {
 
   const getReport = async () => {
     const reportResponse = await reportsCommunicator.getCandidatesReport(props);
-    setReports(reportResponse);
+    const reportArray = reportResponse.map(obj => reportsMapper.createReport(obj));
+    setReports(reportArray);
     setIsLoading(false);
   };
 

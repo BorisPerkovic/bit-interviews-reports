@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import LogInFormValidaion from "../../utils/FormsValidation/LoginFormValidation/LoginFormValdiation";
+import LogInFormValidation from "./LoginFormValidation/LoginFormValdiation";
 import { authService } from "../../services/auth.service";
 import Spinner from "../Spinner/Spinner";
 
@@ -29,7 +29,7 @@ const LoginForm = () => {
         /* getting data values from refs and creating instance for form valdiation */
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
-        const formValid = new LogInFormValidaion(enteredEmail, enteredPassword);
+        const formValid = new LogInFormValidation(enteredEmail, enteredPassword);
 
         /* setting new states for input fields */
         setFormValidaiton({

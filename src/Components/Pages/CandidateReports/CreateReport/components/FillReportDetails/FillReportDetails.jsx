@@ -5,7 +5,7 @@ import {
   OPTIONS_PHASE,
   OPTIONS_STATUS,
 } from "../../../../../../constants/endpoints";
-import NewReportFormValidation from "../../../../../../utils/FormsValidation/NewReportFormValdiaiton/NewReportFormValdiaiton";
+import NewReportFormValidation from "../../NewReportFormValdiaiton/NewReportFormValdiaiton";
 
 /* FillReportDetails JSX Component */
 const FillReportDetails = ({ prevPage, pickFillReportHandler, newReport }) => {
