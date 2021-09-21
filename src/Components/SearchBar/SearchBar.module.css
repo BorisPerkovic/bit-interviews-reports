@@ -9,9 +9,7 @@
 }
 
 .searchInput{
-    outline: none;
-    box-shadow: none;
-    
+    outline: none !important;    
 }
 
 
