@@ -1,11 +1,6 @@
-<<<<<<< HEAD:src/Components/Pages/MainPage/services/candidate.service.js
-import { getByPlaceholderText } from "@testing-library/dom";
-import { Candidate } from "../../../../entities/Candidate";
-import userPlaceholder from '../../../../assets/user-placeholder.png';
-=======
-import { Candidate } from "../../entities/Candidate";
+import { Candidate } from '../../entities/Candidate';
 import placeholderImg from "../../assets/user-placeholder.png";
->>>>>>> development:src/communicators/Candidates/CandidateMapper.js
+
 
 class CandidateMapper {
 
@@ -36,11 +31,7 @@ class CandidateMapper {
           Math.random() * 80
         )}.jpg`;
       }
-<<<<<<< HEAD:src/Components/Pages/MainPage/services/candidate.service.js
-      return userPlaceholder;
-=======
       return placeholderImg;
->>>>>>> development:src/communicators/Candidates/CandidateMapper.js
     };
 
     const candidateEmail = obj.email.toLowerCase() || "no email address";
