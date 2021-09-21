@@ -3,10 +3,13 @@ import { Link, useLocation, useHistory } from "react-router-dom";
 import classes from './Header.module.css';
 
 const Header = () => {
+
+  /* use Location hook for hiding header in log in component and use History for redirects */
   const location = useLocation();
   const path = location.pathname !== "/login";
   const history = useHistory();
 
+  /* function for logout user on click logout link and redirect to log in component */
   const logOut = () => {
     localStorage.removeItem("token");
     history.push("/login");

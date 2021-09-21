@@ -1,12 +1,19 @@
-.row-form {
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.form-bg {
+  background-color: #e8ecee;
+}
+
+.bgImage {
+  background-image: url("../../assets/bg-image.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.form-bg input {
+  padding: 10px;
 }
 
 .invalid input {
-  border-color: red;
+  border-color: red;  
 }
 .invalid label {
   color: red;
