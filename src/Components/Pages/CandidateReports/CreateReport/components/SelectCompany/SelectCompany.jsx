@@ -1,8 +1,8 @@
 import React, { useState, useEffect, Fragment } from "react";
 import CompanySelectItem from "./CompanySelectItem";
-import { Company } from "../../../../../../entities/Company";
+import { companyMapper } from "../../../../../../communicators/Companies/CompaniesMapper";
 import { searchBarService } from "../../../../../SearchBar/SearchBar.service";
-import { dataService } from "../../../../../../services/data.service";
+import { companiesCommunicator } from "../../../../../../communicators/Companies/CompaniesCommunicator";
 
 const SelectCompany = ({
   searchValue,
@@ -15,10 +15,10 @@ const SelectCompany = ({
   const [activeCompany, setActiveCompany] = useState(null);
 
   const getCompaniesList = async () => {
-    const response = await dataService.getCompanies();
-    const companyArray = response
-      .filter((param) => param.name)
-      .map((obj) => new Company(obj.id, obj.name, obj.email));
+    const response = await companiesCommunicator.getCompanies();
+    const companyArray = companyMapper
+      .filterCompanies(response)
+      .map( obj => companyMapper.createCompany(obj));
     setCompanyList(companyArray);
     setFilterCompanyList(companyArray);
   };

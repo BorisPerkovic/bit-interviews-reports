@@ -1,10 +1,15 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Spinner from "../../Spinner/Spinner";
 import ModalReports from "../../Modal/ModalReports/ModalReports";
-import { authService } from "../../../services/auth.service";
-import { dataService } from "../../../services/data.service";
+
+import { tokenService } from "../../../services/Token.service";
+import { candidateCommunicator } from "../../../communicators/Candidates/CandidateCommunicator";
+import { candidateMapper } from "../../../communicators/Candidates/CandidateMapper";
+import { reportsCommunicator } from "../../../communicators/Reports/ReportsCommunicator";
+import { reportsMapper } from "../../../communicators/Reports/ReportsMapper";
+
 import { formateDate } from "../../../utils/date-function";
-import { candidateService } from "../MainPage/services/candidate.service";
+
 import classes from "./CandidateReports.module.css";
 const CandidateReports = (props) => {
   const [candidate, setCandidate] = useState({});
@@ -16,7 +21,7 @@ const CandidateReports = (props) => {
 
   /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
   const isLogedIn = () => {
-    const token = authService.getToken();
+    const token = tokenService.getToken();
     if (!token) {
       window.location.assign("http://localhost:3000/login");
       return false;
@@ -27,13 +32,16 @@ const CandidateReports = (props) => {
   };
 
   const getCandidate = async () => {
-    const candidatesResponse = await dataService.getSingleCandidate(props);
-    setCandidate(candidateService.createCandidate(candidatesResponse));
+    const candidatesResponse = await candidateCommunicator.getSingleCandidate(
+      props
+    );
+    setCandidate(candidateMapper.createCandidate(candidatesResponse));
   };
 
   const getReport = async () => {
-    const reportResponse = await dataService.getCandidatesReport(props);
-    setReports(reportResponse);
+    const reportResponse = await reportsCommunicator.getCandidatesReport(props);
+    const reportArray = reportResponse.map(obj => reportsMapper.createReport(obj));
+    setReports(reportArray);
     setIsLoading(false);
   };
 

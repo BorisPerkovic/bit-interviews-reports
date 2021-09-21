@@ -4,11 +4,10 @@ import { CREATE_REPORT_SIDE_BAR } from "../../../../../../constants/endpoints";
 const CreateReportSideBar = ({ switchValue, candidate }) => {
   return (
     <div className="container">
-      <ul className="list-group border-bottom border-dark">
+      <ul className="list-group">
         {CREATE_REPORT_SIDE_BAR.map((listItem, index) => {
           return (
             <li
-              className=""
               key={index}
               className={
                 switchValue === index + 1
@@ -21,9 +20,9 @@ const CreateReportSideBar = ({ switchValue, candidate }) => {
           );
         })}
       </ul>
-      <ul className="py-5">
+      <ul className="border-top border-dark mt-5 py-5">
         {(switchValue === 2 || switchValue === 3) && <li className="my-4"><span>Candidate</span> <h3>{candidate.candidateName}</h3></li>}
-        {switchValue === 3 && <li className="my-4"><span>Copmany</span> <h3>{candidate.companyName}</h3></li>}
+        {switchValue === 3 && <li className="my-4"><span>Company</span> <h3>{candidate.companyName}</h3></li>}
       </ul>
     </div>
   );

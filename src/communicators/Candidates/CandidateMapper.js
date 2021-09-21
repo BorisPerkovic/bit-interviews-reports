@@ -1,7 +1,7 @@
-import { Candidate } from "../../../../entities/Candidate";
+import { Candidate } from "../../entities/Candidate";
+import placeholderImg from "../../assets/user-placeholder.png";
 
-class CandidateService {
-  constructor() {}
+class CandidateMapper {
 
   createCandidate(obj) {
     let validationCounter = 0;
@@ -30,7 +30,7 @@ class CandidateService {
           Math.random() * 80
         )}.jpg`;
       }
-      return "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png";
+      return placeholderImg;
     };
 
     const candidateEmail = obj.email.toLowerCase() || "no email address";
@@ -52,9 +52,8 @@ class CandidateService {
   }
 
   filterCandidate(arr) {
-    return arr.filter(item => item.name);
+    return arr.filter((item) => item.name);
   }
-  
 }
 
-export const candidateService = new CandidateService();
+export const candidateMapper = new CandidateMapper();
