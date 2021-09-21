@@ -5,7 +5,10 @@
 .timesSign{
   color: #616161;
 }
-.bgColorReport a div:hover{
+.eyeSign{
+  color: #616161;
+}
+.bgColorReport:hover{
   background-color: #b8b7b7;
   color: white;
 }

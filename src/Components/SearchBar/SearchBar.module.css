@@ -8,8 +8,9 @@
     color: #616161;
 }
 
-.searchInput:focus{
-    outline: #C4E3CB;
+.searchInput{
+    outline: none;
+    box-shadow: none;
     
 }
 

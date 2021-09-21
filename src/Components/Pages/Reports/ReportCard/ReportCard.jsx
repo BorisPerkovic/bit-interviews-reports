@@ -55,7 +55,7 @@ const ReportCard = ({ report, setDeletedReport, deletedReport }) => {
             }}
           >
             {" "}
-            <i className="far fa-eye"></i>{" "}
+            <i className={`far fa-eye ${classes.eyeSign}`}></i>{" "}
           </span>
           <span>
             {" "}
