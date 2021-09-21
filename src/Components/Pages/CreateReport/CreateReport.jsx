@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import CreateReportSideBar from "./components/CreateReportSideBar/CreateReportSideBar";
-import SearchBar from "../../../SearchBar/SearchBar";
+import SearchBar from "../../SearchBar/SearchBar";
 import SelectCandidate from "./components/SelectCandidate/SelectCandidate";
 import SelectCompany from "./components/SelectCompany/SelectCompany";
 import FillReportDetails from "./components/FillReportDetails/FillReportDetails";
 
 export const CreateReport = () => {
+  const [resetInput, setResetInput] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [switchValue, setSwitchValue] = useState(1);
   const [newReport, setNewReport] = useState({
@@ -57,7 +58,10 @@ export const CreateReport = () => {
   const getSearchValue = (input) => {
     setSearchValue(input);
   };
-
+  /* function to take argument from the child component "SearchBar" and sets the "resetInput" state to new value */
+  const resetSearchValue = (didReset) => {
+    setResetInput(didReset);
+  };
   const pickUserHandler = (candidateName, candidateId) => {
     setNewReport({ ...newReport, candidateId, candidateName });
   };
@@ -86,6 +90,7 @@ export const CreateReport = () => {
 
   useEffect(() => {
     getSearchValue("");
+    resetSearchValue(true);
   }, [switchValue]);
 
   return (
@@ -95,6 +100,8 @@ export const CreateReport = () => {
           <SearchBar
             getSearchValue={getSearchValue}
             searchBarTitle={searchBarTitle}
+            resetInput={resetInput}
+            resetSearchValue={resetSearchValue}
           />
         )}
         <div className="row">

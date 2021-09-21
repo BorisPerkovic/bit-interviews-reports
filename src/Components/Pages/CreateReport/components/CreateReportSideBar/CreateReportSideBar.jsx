@@ -1,5 +1,5 @@
 import React from "react";
-import { CREATE_REPORT_SIDE_BAR } from "../../../../../../constants/endpoints";
+import { CREATE_REPORT_SIDE_BAR } from "../../../../../constants/endpoints";
 
 const CreateReportSideBar = ({ switchValue, candidate }) => {
   return (
@@ -21,8 +21,16 @@ const CreateReportSideBar = ({ switchValue, candidate }) => {
         })}
       </ul>
       <ul className="border-top border-dark mt-5 py-5">
-        {(switchValue === 2 || switchValue === 3) && <li className="my-4"><span>Candidate</span> <h3>{candidate.candidateName}</h3></li>}
-        {switchValue === 3 && <li className="my-4"><span>Company</span> <h3>{candidate.companyName}</h3></li>}
+        {(switchValue === 2 || switchValue === 3) && (
+          <li className="my-4">
+            <span>Candidate</span> <h3>{candidate.candidateName}</h3>
+          </li>
+        )}
+        {switchValue === 3 && (
+          <li className="my-4">
+            <span>Company</span> <h3>{candidate.companyName}</h3>
+          </li>
+        )}
       </ul>
     </div>
   );

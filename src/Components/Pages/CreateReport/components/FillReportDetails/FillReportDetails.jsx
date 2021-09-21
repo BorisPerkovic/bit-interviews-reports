@@ -1,10 +1,10 @@
 import React, { useState, useRef, Fragment } from "react";
 import { useHistory } from "react-router";
-import { reportsCommunicator } from "../../../../../../communicators/Reports/ReportsCommunicator";
+import { reportsCommunicator } from "../../../../../communicators/Reports/ReportsCommunicator";
 import {
   OPTIONS_PHASE,
   OPTIONS_STATUS,
-} from "../../../../../../constants/endpoints";
+} from "../../../../../constants/endpoints";
 import NewReportFormValidation from "../../NewReportFormValdiaiton/NewReportFormValdiaiton";
 
 /* FillReportDetails JSX Component */
