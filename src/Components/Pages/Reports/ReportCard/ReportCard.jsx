@@ -32,25 +32,25 @@ const ReportCard = ({ report, setDeletedReport, deletedReport }) => {
       {displayReportModal && (
         <ModalReports report={detailsReportModal} onClose={reportModalClose} />
       )}
-      <div className="row my-4 py-2 rounded shadow">
-        <div className="col-sm-3 py-2 px-3 border-end border-dark">
+      <div className={`row my-4 py-2 rounded shadow ${classes.bgColorReport}`}>
+        <div className="col-10 col-sm-10 mx-auto col-md-3 mt-2 py-2 px-3 border-end border-dark">
           <h5>{report.companyName}</h5>
           <span>Company</span>
         </div>
-        <div className="col-sm-3 py-2 px-3 border-end border-dark">
+        <div className="col-10 col-sm-10 mx-auto col-md-3 mt-2 py-2 px-3 border-end border-dark">
           <h5>{report.candidateName}</h5>
           <span>Candidate</span>
         </div>
-        <div className="col-sm-2 py-2 px-3 border-end border-dark">
+        <div className="col-10 col-sm-10 mx-auto col-md-2 mt-2 py-2 px-3 border-end border-dark">
           <h5>{formateDate(report.interviewDate)}</h5>
           <span>Interview Date</span>
         </div>
-        <div className="col-sm-2 py-2 px-3 border-end border-dark">
+        <div className="col-10 col-sm-10 mx-auto col-md-2 mt-2 py-2 px-3 border-end border-dark">
           <h5>{report.status}</h5>
           <span>Status</span>
         </div>
         <div
-          className={`col-sm-2 p-2 d-flex justify-content-center align-items-center ${classes.reportsIcons}`}
+          className={`col-10 col-sm-10 mx-auto col-md-2 mt-2 p-2 d-flex justify-content-center align-items-center ${classes.reportsIcons}`}
         >
           <span
             className="me-5"
@@ -59,12 +59,12 @@ const ReportCard = ({ report, setDeletedReport, deletedReport }) => {
             }}
           >
             {" "}
-            <i className="far fa-eye"></i>{" "}
+            <i className={`far fa-eye ${classes.eyeSign}`}></i>{" "}
           </span>
           <span>
             {" "}
             <i
-              className="fas fa-times"
+              className= {`fas fa-times ${classes.timesSign}`}
               onClick={() => deleteOneReport(report)}
             ></i>{" "}
           </span>

@@ -150,7 +150,7 @@ const FillReportDetails = ({ prevPage, pickFillReportHandler, newReport }) => {
       </div>
 
       <div className="d-flex justify-content-between">
-        <button onClick={prevPage} className="btn btn-primary mt-3 ms-2">
+        <button onClick={prevPage} className="btn btn-secondary mt-3 ms-2">
           Back
         </button>
         <button onClick={onSubmitHandler} className="btn btn-success mt-3 me-2">

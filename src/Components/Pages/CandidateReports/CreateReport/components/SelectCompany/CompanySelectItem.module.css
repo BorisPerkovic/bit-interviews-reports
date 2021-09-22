@@ -1,0 +1,20 @@
+.companySelect-item {
+  background-color: #8aae92;
+  color: #616161;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.companySelect-item:hover {
+  background-color: #b8b7b7;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.active {
+  padding: 10px;
+  background-color: #b8b7b7;
+  color: white;
+}

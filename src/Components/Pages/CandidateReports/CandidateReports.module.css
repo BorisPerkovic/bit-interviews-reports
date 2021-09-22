@@ -1,3 +1,7 @@
 .eye {
-    cursor: pointer;
+  cursor: pointer;
+  color: #616161;
+}
+.eye:hover {
+  color: #86998b;
 }

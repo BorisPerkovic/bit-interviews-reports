@@ -5,6 +5,7 @@ import Spinner from "../../Spinner/Spinner";
 import { tokenService } from "../../../services/Token.service";
 import SearchBar from "../../SearchBar/SearchBar";
 import { searchBarService } from "../../SearchBar/SearchBar.service";
+import classes from './MainPage.module.css';
 import { candidateCommunicator } from "../../../communicators/Candidates/CandidateCommunicator";
 import { candidateMapper } from "../../../communicators/Candidates/CandidateMapper";
 
@@ -65,14 +66,14 @@ const MainPage = () => {
   return (
     <Fragment>
       {logIn && (
-        <div className="container main-mb">
+        <div className= {`container-fluid g-0 main-mb ${classes.main}`}>
           <SearchBar
             getSearchValue={getSearchValue}
             searchBarTitle={searchBarTitle}
           />
-          <main className="container py-5">
+          <main className= {`container ${classes.main} py-5 px-3 100vh `}>
             {isLoading && <Spinner />}
-            <div className=" row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5">
+            <div className={`row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5 ${classes.cardHolder}`}>
               {searchedCandidates.map((candidate) => (
                 <Link
                   key={candidate.id}

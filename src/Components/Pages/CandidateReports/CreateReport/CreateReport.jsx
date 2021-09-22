@@ -5,6 +5,8 @@ import SelectCandidate from "./components/SelectCandidate/SelectCandidate";
 import SelectCompany from "./components/SelectCompany/SelectCompany";
 import FillReportDetails from "./components/FillReportDetails/FillReportDetails";
 
+import classes from "./CreateReport.module.css";
+
 export const CreateReport = () => {
   const [searchValue, setSearchValue] = useState("");
   const [switchValue, setSwitchValue] = useState(1);
@@ -90,15 +92,15 @@ export const CreateReport = () => {
 
   return (
     <div className="container-fluid main-mb">
-      <div className="container">
-        {switchValue !== 3 && (
+      {switchValue !== 3 && (
           <SearchBar
             getSearchValue={getSearchValue}
             searchBarTitle={searchBarTitle}
           />
         )}
+      <div className="container">
         <div className="row">
-          <div className="col-md-4 px-2 my-4 border-end border-dark">
+          <div className={`col-md-4 px-2 my-4 ${classes["reportsMiddle-border"]}`}>
             <CreateReportSideBar
               switchValue={switchValue}
               candidate={newReport}
