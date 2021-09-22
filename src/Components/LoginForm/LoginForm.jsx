@@ -56,12 +56,12 @@ const LoginForm = () => {
     return(
         <div className = {`container-fluid ${classes["form-bg"]}`}>
             <div className = "row align-items-center">
-            <div className={`col-md-8 ${classes.bgImage}`}>
+            <div className={`col-sm-6 col-md-7 col-xl-8 ${classes.bgImage}`}>
                 <Team />
             </div>
-            <div className="col-md-4 px-5">
+            <div className="col-12 col-sm-6 col-md-5 col-xl-4 px-5">
                 <div className="row">
-                    <div className="col-md-9 mx-auto">
+                    <div className="col-10 col-sm-10 col-md-10 mx-auto pt-5">
                         <h1 className = "text-center text-primary mt-3">Log In</h1>
                         <form onSubmit = {onSubmitHandler}>
                             <div className={`my-5 ${!formValidaiton.email ? classes.invalid : ""}`}>

@@ -70,12 +70,12 @@ const CandidateReports = (props) => {
         <ModalReports report={detailsReportModal} onClose={reportModalClose} />
       )}
       {isLoading && <Spinner />}
-      {!isLoading && (
-        <div className="container main-mb">
+      {logIn && !isLoading && (
+        <div className="container pt-4 main-mb">
           <div className="row pt-4">
-            <div className="col-md-2">
+            <div className="col-md-2 col-6 mx-auto">
               <img
-                className="img-fluid"
+                className="img-fluid w-100"
                 src={candidate.image}
                 alt="Avatar"
               ></img>

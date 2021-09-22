@@ -2,13 +2,29 @@
   font-size: 1.3rem;
   cursor: pointer;
 }
-.timesSign{
+
+.timesSign {
   color: #616161;
 }
-.eyeSign{
+
+.eyeSign {
   color: #616161;
 }
-.bgColorReport:hover{
+
+.bgColorReport {
+  background-color: #8AAE92;
+  color: #616161;
+}
+
+.bgColorReport:hover {
   background-color: #b8b7b7;
   color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (max-width: 767px) { 
+
+  .bgColorReport div {
+    border-right: none !important;
+  }
 }

@@ -1,5 +1,5 @@
 .form-bg {
-  background-color: #e8ecee;
+  background-color: #F4F9F4;
 }
 
 .bgImage {
@@ -17,4 +17,11 @@
 }
 .invalid label {
   color: red;
+}
+
+@media (max-width: 576px) { 
+
+  .bgImage {
+    display: none;
+  }
 }

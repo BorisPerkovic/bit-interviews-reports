@@ -42,7 +42,7 @@ const SelectCompany = ({
 
   return (
     <Fragment>
-      <div className="row px-4 py-2 select-wrapper">
+      <div className="px-4 py-2 gx-3 gy-3 select-wrapper">
         {filterCompanyList.map((company) => (
           <CompanySelectItem
             company={company}

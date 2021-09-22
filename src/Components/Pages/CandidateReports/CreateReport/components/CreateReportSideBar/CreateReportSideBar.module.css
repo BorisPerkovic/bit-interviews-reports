@@ -1,0 +1,15 @@
+.groups-steps {
+  padding: 10px;
+  font-size: larger;
+  color: teal !important;
+}
+
+.active {
+  background-color: #8AAE92 !important;
+  color: teal !important; ;
+}
+
+.reports-details {
+  color: teal;
+  border-top: 1px solid teal;
+}

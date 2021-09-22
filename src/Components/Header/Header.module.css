@@ -15,15 +15,6 @@
     background-color: #bbd1bb;
     color:teal
 }
-textarea:focus, input:focus, input[type]:focus, .btn:focus, .btn:active, .btn:focus:active, .active:focus{   
-    border-color: #8AAE92 !important;
-    box-shadow: -1px 0px 10px 5px rgba(138,174,146,0.75) !important;
-    -webkit-box-shadow: -1px 0px 10px 5px rgba(138,174,146,0.75);
-    -moz-box-shadow: -1px 0px 10px 5px rgba(138,174,146,0.75);
-    outline: 0 none;
-    
-}
-
 
 
 @media (max-width: 576px) { 

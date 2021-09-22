@@ -31,11 +31,11 @@ const Header = () => {
               Reports
             </button>
            </Link>
-           <a href="" onClick={logOut} className={`mx-1 ${classes.link}`}> 
-           <button  type="button" className={`btn ${classes.button}`}>
-            Log Out
+           <Link to="/login" className = {`mx-1 ${classes.link}`}>
+           <button onClick={logOut} type="button" className={`btn ${classes.button}`}>
+              Log Out
            </button>
-           </a>
+           </Link>
           </div>
         </header>
       )}

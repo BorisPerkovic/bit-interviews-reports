@@ -26,7 +26,7 @@ const TeamCards = ( { developer } ) => {
         {displayDeveloperModal && (
               <ModalDeveloper developer={detailsDeveloperModal} onClose={reportModalClose} />
           )}
-          <div className="col-md-5 col-12 my-3">
+          <div className="col-sm-11 col-md-5 col-lg-5 col-xl-5 my-3">
               <div className={classes["team-img"]}>
                 <img src={developer.image} alt={developer.name} onClick={() => { developerModalHandler(developer) }} />
               </div>

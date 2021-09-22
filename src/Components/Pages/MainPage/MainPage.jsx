@@ -67,12 +67,10 @@ const MainPage = () => {
     <Fragment>
       {logIn && (
         <div className= {`container-fluid g-0 main-mb ${classes.main}`}>
-          <div className = "container">
           <SearchBar
             getSearchValue={getSearchValue}
             searchBarTitle={searchBarTitle}
           />
-          </div>
           <main className= {`container ${classes.main} py-5 px-3 100vh `}>
             {isLoading && <Spinner />}
             <div className={`row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5 ${classes.cardHolder}`}>
