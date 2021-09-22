@@ -1,0 +1,19 @@
+.team-text{
+  color: #c5c2c2;
+} 
+
+.team-text h1 {
+  color: #c5c2c2;
+}
+
+@media (max-width: 680px) { 
+
+  .team-text h1 {
+    font-size: 25px;
+  }
+
+  .team-text h2 {
+    font-size: 24px;
+  }
+}
+

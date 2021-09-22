@@ -1,0 +1,10 @@
+.reportsMiddle-border {
+  border-right: 1px solid teal;
+}
+
+@media (max-width: 768px) { 
+
+  .reportsMiddle-border {
+    border-right: none;
+  }
+}

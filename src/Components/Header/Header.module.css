@@ -1,0 +1,40 @@
+.header {
+  background-color: #c4e3cb;
+  color: #616161;
+}
+
+.link {
+  background-color: #8aae92;
+  font-weight: 800;
+  border-radius: 5px;
+  color: #4e4d4d;
+}
+
+.button:hover {
+  background-color: #bbd1bb;
+  color: #616161 !important;
+}
+.button:focus {
+  outline: 0 none !important;
+  box-shadow: none !important;
+}
+.active-route {
+  border-color: #8aae92 !important;
+  box-shadow: 0px 0px 5px 3px rgba(105, 105, 105, 0.39) !important;
+  -webkit-box-shadow: 0px 0px 5px 3px rgba(105, 105, 105, 0.39) !important;
+  -moz-box-shadow: 0px 0px 5px 3px rgba(105, 105, 105, 0.39) !important;
+}
+.active-route button {
+  font-weight: bold !important;
+}
+
+@media (max-width: 576px) {
+  .link {
+    width: 100%;
+    margin-bottom: 0.5em;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

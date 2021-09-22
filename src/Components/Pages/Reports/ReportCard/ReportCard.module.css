@@ -1,0 +1,33 @@
+.reportsIcons i {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.timesSign {
+  color: #616161;
+}
+
+.eyeSign {
+  color: #616161;
+}
+.eyeSign:hover,
+.timesSign:hover {
+  color: #c4e3cb;
+}
+
+.bgColorReport {
+  background-color: #8aae92;
+  color: #616161;
+}
+
+.bgColorReport:hover {
+  background-color: #b8b7b7;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (max-width: 767px) {
+  .bgColorReport div {
+    border-right: none !important;
+  }
+}
