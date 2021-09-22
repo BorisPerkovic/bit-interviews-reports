@@ -4,9 +4,8 @@ import { formateDate } from "../../../../utils/date-function";
 import classes from "./ModalReportOverlay.module.css";
 
 const ModalReportsOverlay = ({ report, onClose }) => {
-
   console.log(report);
-  
+
   /* 
     -function for closing eport modal on click X button
     -onClose function is passed as props from single Candidate Report and Report  and triggered here but state is changing in single Candidate Report and Report components
@@ -15,29 +14,38 @@ const ModalReportsOverlay = ({ report, onClose }) => {
     onClose(false);
     return false;
   };
-  
+
   return (
-    <div className={`col-11 col-sm-11 col-md-11 col-lg-11 col-xl-6 p-5 ${classes.modal}`}>
+    <div
+      className={`col-11 col-sm-11 col-md-11 col-lg-11 col-xl-6 p-5 ${classes.modal}`}
+    >
       <div className="d-flex justify-content-between align-items-center border-bottom border-dark">
-        <h2>{report.candidateName || report[0].candidateName}</h2>
+        <h2>{report.candidateName || "Unknown"}</h2>
         <p>
-          <i className={`fas fa-times-circle ${classes.timesCircle}`} onClick={onCloseReportModal}></i>
+          <i
+            className={`fas fa-times-circle ${classes.timesCircle}`}
+            onClick={onCloseReportModal}
+          ></i>
         </p>
       </div>
       <div className="row py-3">
         <div className="col-md-5">
           <p>Company</p>
-          <h4>{report.companyName || report[0].companyName}</h4>
+          <h4>{report.companyName || "Unknown"}</h4>
           <p>Interview Date</p>
-          <h4>{formateDate(report.interviewDate  || report[0].interviewDate)}</h4>
+          <h4>
+            {report.interviewDate
+              ? formateDate(report.interviewDate)
+              : "Unknown"}
+          </h4>
           <p>Phase</p>
-          <h4>{report.phase || report[0].phase}</h4>
+          <h4>{report.phase || "Unknown"}</h4>
           <p>Status</p>
-          <h4>{report.status || report[0].status}</h4>
+          <h4>{report.status || "Unknown"}</h4>
         </div>
         <div className="col-md-7">
           <p>Notes</p>
-          <p>{report.note || report[0].note}</p>
+          <p>{report.note || "Unknown"}</p>
         </div>
       </div>
     </div>

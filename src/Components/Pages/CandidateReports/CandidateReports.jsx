@@ -40,14 +40,16 @@ const CandidateReports = (props) => {
 
   const getReport = async () => {
     const reportResponse = await reportsCommunicator.getCandidatesReport(props);
-    const reportArray = reportResponse.map(obj => reportsMapper.createReport(obj));
+    const reportArray = reportResponse.map((obj) =>
+      reportsMapper.createReport(obj)
+    );
     setReports(reportArray);
     setIsLoading(false);
   };
 
   const reportModalHandler = (id) => {
     const companyReport = reports.filter((item) => item.id === id);
-    setDetailsReportModal(companyReport);
+    setDetailsReportModal(companyReport[0]);
     setDisplayReportModal(true);
   };
 

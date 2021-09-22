@@ -56,7 +56,6 @@ const SearchBar = ({
             <div className="col-sm-6 col-md-4 px-3">
               <input
                 className={`ms-auto form-control me-0 rounded ${classes.searchInput}`}
-                defaultValue=""
                 value={reset ? "" : searchValue}
                 type="search"
                 placeholder="Search"
