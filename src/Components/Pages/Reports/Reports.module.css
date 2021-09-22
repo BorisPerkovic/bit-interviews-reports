@@ -1,5 +1,21 @@
-.add{
-    position: fixed;
-    bottom: 100px; 
-    right: 25px;
+.add {
+  position: fixed;
+  bottom: 8rem;
+  right: 3rem;
+  color: #616161;
+  z-index: 9999;
+}
+.add:hover {
+  color: #c4e3cb;
+}
+
+/* @media only screen and (max-width: 1023px) and (min-width: 769px) {
+  .add {
+    right: 10%;
+  }
+} */
+@media (min-width: 769px) {
+  .add {
+    right: 10%;
+  }
 }

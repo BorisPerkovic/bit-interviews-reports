@@ -10,3 +10,17 @@
   margin-bottom: 10px;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 1160px) and (min-width: 780px) {
+  .team-img img {
+    height: 150px;
+  }
+}
+
+@media (max-width: 779px) { 
+
+  .team-img img {
+    height: 100px;
+  }
+}
+

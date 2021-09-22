@@ -12,8 +12,8 @@ const Footer = () => {
     return(
         <Fragment>
             {path && (
-                <footer className={classes.footer} >
-                    <p className='text-center'>Footer</p>
+                <footer className={`d-flex justify-content-center align-items-center ${classes.footer}`} >
+                    <p className='text-center'>Copyright &copy; BiT Students 2021 | Final Project</p>
                 </footer>
             )}
         </Fragment>

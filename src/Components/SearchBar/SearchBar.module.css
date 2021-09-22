@@ -1,0 +1,16 @@
+.navBar{
+    background-color: #ebf5eb;
+}
+
+
+.title h2{
+    color: #616161;
+}
+
+@media (max-width: 576px) { 
+  
+ .title{
+     text-align: center;
+ }
+
+}

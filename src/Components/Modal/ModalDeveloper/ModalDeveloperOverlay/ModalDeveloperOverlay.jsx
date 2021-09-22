@@ -14,11 +14,11 @@ const ModalDeveloperOverlay = ({ developer, onClose }) => {
   };
   
   return (
-    <div className={`col-md-6 p-5 ${classes.modal}`}>
+    <div className={`col-11 col-sm-11 col-md-11 col-lg-11 col-xl-6 p-5 ${classes.modal}`}>
       <div className="d-flex justify-content-between align-items-center border-bottom border-dark">
         <h2>{developer.name}</h2>
         <p>
-          <i className="fas fa-times-circle" onClick={onCloseDeveloperModal}></i>
+          <i className={`fas fa-times-circle ${classes.timesCircle}`} onClick={onCloseDeveloperModal}></i>
         </p>
       </div>
       <div className="py-3">

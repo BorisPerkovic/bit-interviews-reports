@@ -1,11 +1,11 @@
 .form-bg {
-  background-color: #e8ecee;
+  background-color: #f4f9f4;
 }
 
 .bgImage {
   background-image: url("../../assets/bg-image.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
 }
 
 .form-bg input {
@@ -13,8 +13,14 @@
 }
 
 .invalid input {
-  border-color: red;  
+  border-color: red;
 }
 .invalid label {
   color: red;
+}
+
+@media (max-width: 576px) {
+  .bgImage {
+    display: none;
+  }
 }

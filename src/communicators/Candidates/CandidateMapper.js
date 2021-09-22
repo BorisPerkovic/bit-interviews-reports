@@ -1,5 +1,6 @@
-import { Candidate } from "../../entities/Candidate";
+import { Candidate } from '../../entities/Candidate';
 import placeholderImg from "../../assets/user-placeholder.png";
+
 
 class CandidateMapper {
 

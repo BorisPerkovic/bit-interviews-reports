@@ -1,7 +1,7 @@
 .modal {
-  background-color: #fff;
+  background-color: #dce0dc;
   position: fixed;
-  top: 25vh;
+  top: 25%;
   left: 25%;
   z-index: 100;
   overflow: hidden;
@@ -10,4 +10,37 @@
 .modal i {
   font-size: 2.5rem;
   cursor: pointer;
+}
+.timesCircle{
+  color: #616161;
+}
+
+@media (max-width: 749px) { 
+
+  .modal {
+    top: 10%;
+    left: 4%;
+  }
+}
+
+@media only screen and (max-width: 780px) and (min-width: 750px) {
+  .modal {
+    top: 10%;
+    left: 4%;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 781px) {
+  .modal {
+    top: 20%;
+    left: 4%;
+  }
+}
+
+@media (min-width: 1201px) { 
+
+  .modal {
+    top: 25%;
+    left: 25%;
+  }
 }

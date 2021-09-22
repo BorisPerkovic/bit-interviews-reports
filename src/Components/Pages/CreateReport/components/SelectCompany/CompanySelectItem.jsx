@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react'
+import React, { useCallback } from 'react';
+import classes from './CompanySelectItem.module.css';
 
 const CompanySelectItem = ({
   company,
@@ -8,7 +9,7 @@ const CompanySelectItem = ({
 }) => {
   return (
     <div
-      className="col-sm-12 col-md-6 col-lg-6 offset-3 my-3"
+      className="col-sm-12 col-md-6 col-lg-6 mx-auto my-3 g-0"
 
       //
     >
@@ -19,13 +20,13 @@ const CompanySelectItem = ({
         })}
         className={`p-4 rounded shadow
           ${isActive
-            ? "border border-primary bg-info"
-            : "border border-light bg-light"
+            ? `${classes.active}`
+            : `${classes["companySelect-item"]}`
           }
         `}
       >
         <div className="text-wrapper">
-          <p className="text-center">Company Name: {company.name}</p>
+          <h5 className="text-center mt-1">Company Name: {company.name}</h5>
         </div>
       </div>
     </div>

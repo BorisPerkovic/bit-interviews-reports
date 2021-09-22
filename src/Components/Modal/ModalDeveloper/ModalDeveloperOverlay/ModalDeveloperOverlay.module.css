@@ -1,5 +1,5 @@
 .modal {
-  background-color: #fff;
+  background-color: #dce0dc;
   position: fixed;
   top: 25vh;
   left: 25%;
@@ -10,6 +10,10 @@
 .modal i {
   font-size: 2.5rem;
   cursor: pointer;
+}
+
+.timesCircle{
+  color: #616161;
 }
 
 .modal a {
@@ -26,4 +30,34 @@
 
 .website a:hover {
   color: red;
+}
+
+@media (max-width: 749px) { 
+
+  .modal {
+    top: 10%;
+    left: 4%;
+  }
+}
+
+@media only screen and (max-width: 780px) and (min-width: 750px) {
+  .modal {
+    top: 10%;
+    left: 4%;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 781px) {
+  .modal {
+    top: 20%;
+    left: 4%;
+  }
+}
+
+@media (min-width: 1201px) { 
+
+  .modal {
+    top: 25%;
+    left: 25%;
+  }
 }

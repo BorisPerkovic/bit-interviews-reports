@@ -1,5 +1,7 @@
 import React, { useCallback } from "react";
 
+import classes from "./CandidateSelectItem.module.css";
+
 const CandidateSelectItem = ({
   candidate,
   pickUserHandler,
@@ -17,18 +19,18 @@ const CandidateSelectItem = ({
           setActive(candidate.id, [candidate.id, setActive]);
           pickUserHandler(candidate.name, candidate.id);
         })}
-        className={`candidate-report-item d-flex justify-content-start align-items-center ${
+        className={`d-flex justify-content-start align-items-center rounded ${
           isActive
-            ? "border border-primary bg-info"
-            : "border border-light bg-light"
+            ? `${classes.active}`
+            : `${classes["candidate-report-item"]}`
         }`}
       >
-        <div className="imgHolder">
+        <div className={classes["selectCandidate-img"]}>
           <img src={candidate.image} alt={candidate.name} />
         </div>
-        <div className="text-wrapper">
+        <div className="text-wrapper ms-2">
           <p>{candidate.name}</p>
-          <p>{candidate.email}</p>
+          <p className="text-truncate">{candidate.email}</p>
         </div>
       </div>
     </div>
