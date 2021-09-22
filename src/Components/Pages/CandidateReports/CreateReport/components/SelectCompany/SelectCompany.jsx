@@ -18,7 +18,7 @@ const SelectCompany = ({
     const response = await companiesCommunicator.getCompanies();
     const companyArray = companyMapper
       .filterCompanies(response)
-      .map( obj => companyMapper.createCompany(obj));
+      .map((obj) => companyMapper.createCompany(obj));
     setCompanyList(companyArray);
     setFilterCompanyList(companyArray);
   };
@@ -54,7 +54,7 @@ const SelectCompany = ({
         ))}
       </div>
       <div className="d-flex justify-content-between align-items-center">
-        <button onClick={prevPage} className="btn btn-primary mt-3 ms-2">
+        <button onClick={prevPage} className="btn btn-secondary mt-3 ms-2">
           Back
         </button>
         <button

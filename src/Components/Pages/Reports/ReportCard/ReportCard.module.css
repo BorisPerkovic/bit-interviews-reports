@@ -10,9 +10,13 @@
 .eyeSign {
   color: #616161;
 }
+.eyeSign:hover,
+.timesSign:hover {
+  color: #c4e3cb;
+}
 
 .bgColorReport {
-  background-color: #8AAE92;
+  background-color: #8aae92;
   color: #616161;
 }
 
@@ -22,8 +26,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-@media only screen and (max-width: 767px) { 
-
+@media only screen and (max-width: 767px) {
   .bgColorReport div {
     border-right: none !important;
   }
