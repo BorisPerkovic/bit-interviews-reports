@@ -35,8 +35,6 @@ class ReportsCommunicator {
     const header = httpParams.headerPOST(payload);
     const response = await fetch(BASE_URL + REPORTS_URL, header);
     const data = await response.json();
-
-    console.log(data);
     return data;
   }
 }

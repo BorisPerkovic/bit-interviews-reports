@@ -4,8 +4,6 @@ import { formateDate } from "../../../../utils/date-function";
 import classes from "./ModalReportOverlay.module.css";
 
 const ModalReportsOverlay = ({ report, onClose }) => {
-  console.log(report);
-
   /* 
     -function for closing eport modal on click X button
     -onClose function is passed as props from single Candidate Report and Report  and triggered here but state is changing in single Candidate Report and Report components
