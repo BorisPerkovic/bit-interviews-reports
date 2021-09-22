@@ -1,8 +1,8 @@
 import React, { useState, useEffect, Fragment } from "react";
 import CompanySelectItem from "./CompanySelectItem";
-import { companyMapper } from "../../../../../../communicators/Companies/CompaniesMapper";
-import { searchBarService } from "../../../../../SearchBar/SearchBar.service";
-import { companiesCommunicator } from "../../../../../../communicators/Companies/CompaniesCommunicator";
+import { companyMapper } from "../../../../../communicators/Companies/CompaniesMapper";
+import { searchBarService } from "../../../../SearchBar/SearchBar.service";
+import { companiesCommunicator } from "../../../../../communicators/Companies/CompaniesCommunicator";
 
 const SelectCompany = ({
   searchValue,

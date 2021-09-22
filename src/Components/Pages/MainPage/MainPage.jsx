@@ -45,6 +45,7 @@ const MainPage = () => {
   const getSearchValue = (input) => {
     setSearchValue(input);
   };
+
   /* function to set searched candidates and display resoults */
   const searchCandidates = () => {
     const filteredCandidates = searchBarService.filterByItemName(
@@ -70,6 +71,7 @@ const MainPage = () => {
           <SearchBar
             getSearchValue={getSearchValue}
             searchBarTitle={searchBarTitle}
+            resetInput={false}
           />
           <main className= {`container ${classes.main} py-5 px-3 100vh `}>
             {isLoading && <Spinner />}

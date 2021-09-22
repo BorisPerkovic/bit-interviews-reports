@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { candidateCommunicator } from "../../../../../../communicators/Candidates/CandidateCommunicator";
-import { candidateMapper } from "../../../../../../communicators/Candidates/CandidateMapper";
+import { candidateCommunicator } from "../../../../../communicators/Candidates/CandidateCommunicator";
+import { candidateMapper } from "../../../../../communicators/Candidates/CandidateMapper";
 import CandidateSelectItem from "./CandidateSelectItem";
-import { searchBarService } from "../../../../../SearchBar/SearchBar.service";
+import { searchBarService } from "../../../../SearchBar/SearchBar.service";
 
 const SelectCandidate = ({ pickUserHandler, nextPage, searchValue }) => {
   const [candidateList, setCandidateList] = useState([]);

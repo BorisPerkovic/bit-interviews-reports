@@ -6,7 +6,7 @@ import Header from "./Components/Header/Header";
 import MainPage from "./Components/Pages/MainPage/MainPage";
 import CandidateReports from "./Components/Pages/CandidateReports/CandidateReports";
 import Reports from "./Components/Pages/Reports/Reports";
-import CreateReport from "./Components/Pages/CandidateReports/CreateReport/CreateReport";
+import CreateReport from "./Components/Pages/CreateReport/CreateReport";
 
 const App = () => {
   return (
