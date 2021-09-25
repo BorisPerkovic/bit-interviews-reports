@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/bit-interviews-reports/static/css/main.e9608ad0.chunk.css",
+    "main.js": "/bit-interviews-reports/static/js/main.18eb879f.chunk.js",
+    "main.js.map": "/bit-interviews-reports/static/js/main.18eb879f.chunk.js.map",
+    "runtime-main.js": "/bit-interviews-reports/static/js/runtime-main.247d9d6d.js",
+    "runtime-main.js.map": "/bit-interviews-reports/static/js/runtime-main.247d9d6d.js.map",
+    "static/css/2.f2512455.chunk.css": "/bit-interviews-reports/static/css/2.f2512455.chunk.css",
+    "static/js/2.9071f07b.chunk.js": "/bit-interviews-reports/static/js/2.9071f07b.chunk.js",
+    "static/js/2.9071f07b.chunk.js.map": "/bit-interviews-reports/static/js/2.9071f07b.chunk.js.map",
+    "index.html": "/bit-interviews-reports/index.html",
+    "static/css/2.f2512455.chunk.css.map": "/bit-interviews-reports/static/css/2.f2512455.chunk.css.map",
+    "static/css/main.e9608ad0.chunk.css.map": "/bit-interviews-reports/static/css/main.e9608ad0.chunk.css.map",
+    "static/js/2.9071f07b.chunk.js.LICENSE.txt": "/bit-interviews-reports/static/js/2.9071f07b.chunk.js.LICENSE.txt",
+    "static/media/aleksandar.cf2e21e3.jpg": "/bit-interviews-reports/static/media/aleksandar.cf2e21e3.jpg",
+    "static/media/LoginForm.module.css": "/bit-interviews-reports/static/media/bg-image.75b9aa61.jpg",
+    "static/media/boris.83de7251.jpg": "/bit-interviews-reports/static/media/boris.83de7251.jpg",
+    "static/media/marina.bda21060.jpg": "/bit-interviews-reports/static/media/marina.bda21060.jpg",
+    "static/media/tanja.2e041187.jpg": "/bit-interviews-reports/static/media/tanja.2e041187.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.247d9d6d.js",
+    "static/css/2.f2512455.chunk.css",
+    "static/js/2.9071f07b.chunk.js",
+    "static/css/main.e9608ad0.chunk.css",
+    "static/js/main.18eb879f.chunk.js"
+  ]
+}
