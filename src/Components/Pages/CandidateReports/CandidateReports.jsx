@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { useHistory } from "react-router-dom";
 import Spinner from "../../Spinner/Spinner";
 import ModalReports from "../../Modal/ModalReports/ModalReports";
 
@@ -18,16 +19,16 @@ const CandidateReports = (props) => {
   const [reports, setReports] = useState([]);
   const [displayReportModal, setDisplayReportModal] = useState(false);
   const [detailsReportModal, setDetailsReportModal] = useState({});
+  const history = useHistory();
 
   /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
   const isLogedIn = () => {
     const token = tokenService.getToken();
     if (!token) {
-      window.location.assign("http://localhost:3000/login");
+      history.push("/bit-interviews-reports/login");
       return false;
     }
     setLogIn(true);
-    // setSingleCandidateID(props.match.params.id);
     return true;
   };
 

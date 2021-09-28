@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
+import { useHistory } from "react-router";
 import ReportCard from "./ReportCard/ReportCard";
 import SearchBar from "../../SearchBar/SearchBar";
 import Spinner from "../../Spinner/Spinner";
@@ -20,12 +21,13 @@ const Reports = () => {
   const [deletedReport, setDeletedReport] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const searchBarTitle = "Reports";
+  const history = useHistory();
 
   /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
   const isLogedIn = () => {
     const token = tokenService.getToken();
     if (!token) {
-      window.location.assign("http://localhost:3000/login");
+      history.push("/bit-interviews-reports/login");
       return false;
     }
     setLogIn(true);
@@ -34,7 +36,9 @@ const Reports = () => {
 
   const getReports = async () => {
     const response = await reportsCommunicator.getReports();
-    const reportsArray = response.map(obj => reportsMapper.createReport(obj));
+    const reportsArray = reportsMapper
+      .filterReports(response)
+      .map((obj) => reportsMapper.createReport(obj));
     setReports(reportsArray);
     setSearchedReports(reports);
     setIsLoading(false);
@@ -58,6 +62,7 @@ const Reports = () => {
     isLogedIn();
     getReports();
   }, [deletedReport]);
+  
   useEffect(searchReports, [reports, searchValue]);
   return (
     <Fragment>
@@ -67,7 +72,7 @@ const Reports = () => {
             getSearchValue={getSearchValue}
             searchBarTitle={searchBarTitle}
           />
-          <main className= "container py-5 px-3">
+          <main className= {`container pb-5 px-3 mt-5 ${classes["report-container"]}`}>
             {isLoading && <Spinner />}
             {searchedReports.map((report) => (
               <ReportCard
@@ -77,7 +82,7 @@ const Reports = () => {
                 deletedReport={deletedReport}
               />
             ))}
-            <Link to="/reports/create-report">
+            <Link to="/bit-interviews-reports/reports/create-report">
               <i className={`far fa-plus-square fa-4x ${classes["add"]}`}></i>
             </Link>
           </main>

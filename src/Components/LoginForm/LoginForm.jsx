@@ -118,6 +118,10 @@ const LoginForm = () => {
                   Log In
                 </button>
               </form>
+              <div>
+                <p>E-mail: dev@dev.com</p>
+                <p>Password: developer</p>
+              </div>
             </div>
           </div>
         </div>

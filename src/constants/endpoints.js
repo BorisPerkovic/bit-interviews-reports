@@ -4,11 +4,14 @@ import marinaImg from "../assets/marina.jpg";
 import aleksandarImg from "../assets/aleksandar.jpg";
 
 /* API endpoint for candidates */
-export const CANDIDATES_URL = "/api/candidates";
-export const REPORTS_URL = "/api/reports";
-export const COMPANIES_URL = "/api/companies";
-export const LOGIN_URL = "/login";
-export const BASE_URL = "http://localhost:3333";
+export const CANDIDATES_URL = "interviews-reports/candidates";
+export const SINGLE_CANDIDATES_URL = "interviews-reports/single-candidate/";
+export const REPORTS_URL = "interviews-reports/reports";
+export const ADD_REPORT_URL = "interviews-reports/create-report";
+export const DELETE_REPORT = "interviews-reports/delete-report/";
+export const COMPANIES_URL = "interviews-reports/companies";
+export const LOGIN_URL = "interviews-reports/login";
+export const BASE_URL = "https://borisperkovic.rs/";
 
 /* select options for create report -phase, status */
 export const OPTIONS_PHASE = ["cv", "hr", "tech", "final"];

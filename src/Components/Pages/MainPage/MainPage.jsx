@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import CandidateCard from "./CandidateCard/CandidateCard";
 import Spinner from "../../Spinner/Spinner";
 import { tokenService } from "../../../services/Token.service";
@@ -18,11 +18,13 @@ const MainPage = () => {
   const [searchedCandidates, setSearchedCandidates] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const searchBarTitle = "Candidates";
+  const history = useHistory();
+
   /* function for checking if user is Logged In, if user is not Logged In redirect user to LogIn page */
   const isLogedIn = () => {
     const token = tokenService.getToken();
     if (!token) {
-      window.location.assign("http://localhost:3000/login");
+      history.push("/bit-interviews-reports/login");
       return false;
     }
     setLogIn(true);
@@ -75,11 +77,11 @@ const MainPage = () => {
           />
           <main className= {`container ${classes.main} py-5 px-3 100vh `}>
             {isLoading && <Spinner />}
-            <div className={`row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5 ${classes.cardHolder}`}>
+            <div className={`row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5 ${classes.cardHolder}`}>
               {searchedCandidates.map((candidate) => (
                 <Link
                   key={candidate.id}
-                  to={`/single-candidate/${candidate.id}`}
+                  to={`/bit-interviews-reports/single-candidate/${candidate.id}`}
                 >
                   <CandidateCard candidate={candidate} />
                 </Link>

@@ -9,7 +9,7 @@ export class Report {
     this.interviewDate = interviewDate;
     this.phase = phase;
     this.status = status;
-    this.note = note;
+    this.notes = note;
   };
 
 };

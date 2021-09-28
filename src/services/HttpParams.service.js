@@ -12,7 +12,7 @@ class HttpParamsService {
     const tokenObj = localStorage.getItem("token");
     const requestOptions = {
       method: "DELETE",
-      headers: { Authorization: `Bearer ${tokenObj}` },
+      headers: { Authorization: `Bearer ${tokenObj}` }
     };
     return requestOptions;
   }

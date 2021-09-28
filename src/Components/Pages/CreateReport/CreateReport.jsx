@@ -47,7 +47,6 @@ export const CreateReport = () => {
           <FillReportDetails
             searchValue={searchValue}
             prevPage={prevPage}
-            pickFillReportHandler={pickFillReportHandler}
             newReport={newReport}
           />
         );
@@ -70,16 +69,6 @@ export const CreateReport = () => {
 
   const pickCompanyHandler = (companyName, companyId) => {
     setNewReport({ ...newReport, companyId, companyName });
-  };
-
-  const pickFillReportHandler = (interviewDate, phase, status, note) => {
-    setNewReport({
-      ...newReport,
-      interviewDate: new Date(interviewDate),
-      phase,
-      status,
-      note,
-    });
   };
 
   const nextPage = () => {

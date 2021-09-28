@@ -13,11 +13,11 @@ const App = () => {
     <Fragment>
       <Header />
       <Switch>
-        <Route exact path="/" component={MainPage} />
-        <Route path="/login" component={LoginForm} />
-        <Route path="/single-candidate/:id" component={CandidateReports} />
-        <Route exact path="/reports" component={Reports} />
-        <Route path="/reports/create-report" component={CreateReport} />
+        <Route exact path="/bit-interviews-reports" component={MainPage} />
+        <Route path="/bit-interviews-reports/login" component={LoginForm} />
+        <Route path="/bit-interviews-reports/single-candidate/:id" component={CandidateReports} />
+        <Route exact path="/bit-interviews-reports/reports" component={Reports} />
+        <Route path="/bit-interviews-reports/reports/create-report" component={CreateReport} />
       </Switch>
       <Footer />
     </Fragment>

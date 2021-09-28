@@ -1,3 +1,4 @@
+
 class TokenService {
   getToken() {
     const tokenObj = localStorage.getItem("token");
@@ -10,7 +11,7 @@ class TokenService {
   isTokenExpired(response) {
     if (response.statusText === "Unauthorized") {
       alert("Your access token has expired, please log in.");
-      window.location.assign("http://localhost:3000/login");
+      window.location.assign("https://borisperkovic.github.io/bit-interviews-reports/login");
       return true;
     }
   }

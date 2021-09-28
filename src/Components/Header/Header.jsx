@@ -1,17 +1,15 @@
 import React, { Fragment } from "react";
-import { NavLink, useLocation, useHistory } from "react-router-dom";
+import { NavLink, useLocation} from "react-router-dom";
 import classes from "./Header.module.css";
 
 const Header = () => {
   /* use Location hook for hiding header in log in component and use History for redirects */
   const location = useLocation();
-  const path = location.pathname !== "/login";
-  const history = useHistory();
+  const path = location.pathname !== "/bit-interviews-reports/login";
 
   /* function for logout user on click logout link and redirect to log in component */
   const logOut = () => {
     localStorage.removeItem("token");
-    history.push("/login");
   };
 
   return (
@@ -25,7 +23,7 @@ const Header = () => {
             <NavLink
               activeClassName={classes["active-route"]}
               exact
-              to="/"
+              to="/bit-interviews-reports"
               className={`mx-1 ${classes.link}`}
             >
               <button type="button" className={`btn ${classes.button}`}>
@@ -34,7 +32,7 @@ const Header = () => {
             </NavLink>
             <NavLink
               activeClassName={classes["active-route"]}
-              to="/reports"
+              to="/bit-interviews-reports/reports"
               className={`mx-1 ${classes.link}`}
             >
               <button type="button" className={`btn  ${classes.button}`}>
@@ -43,7 +41,7 @@ const Header = () => {
             </NavLink>
             <NavLink
               activeClassName={classes["active-route"]}
-              to="/login"
+              to="/bit-interviews-reports/login"
               className={`mx-1 ${classes.link}`}
             >
               <button

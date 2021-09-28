@@ -8,7 +8,7 @@ import {
 import NewReportFormValidation from "../../NewReportFormValdiaiton/NewReportFormValdiaiton";
 
 /* FillReportDetails JSX Component */
-const FillReportDetails = ({ prevPage, pickFillReportHandler, newReport }) => {
+const FillReportDetails = ({ prevPage, newReport }) => {
   const history = useHistory();
 
   /* form fields states */
@@ -53,20 +53,26 @@ const FillReportDetails = ({ prevPage, pickFillReportHandler, newReport }) => {
     }
 
     /* sending data values to body - payload object, send report to database, redirect user to landing page */
-    pickFillReportHandler(
-      enteredDate,
-      enteredPhase,
-      enteredStatus,
-      enteredNotes
-    );
-    createReport();
-    history.push("/");
-  };
+    const fullReport = {
+      ...newReport,
+      interviewDate: new Date(enteredDate),
+      phase: enteredPhase,
+      status: enteredStatus,
+      note: enteredNotes,
+    }; 
 
-  const createReport = async () => {
-    const report = await reportsCommunicator.createNewReport(newReport);
-    return report;
+    const createReport = (item) => {
+      const addNewReport = async () => {
+        const addReport = await reportsCommunicator.createNewReport(item);
+        return addReport;
+      }
+      addNewReport();
+    }
+    createReport(fullReport); 
+    history.push("/bit-interviews-reports");
   };
+  
+  
 
   return (
     <Fragment>

@@ -43,7 +43,7 @@ const ModalReportsOverlay = ({ report, onClose }) => {
         </div>
         <div className="col-md-7">
           <p>Notes</p>
-          <p>{report.note || "Unknown"}</p>
+          <p>{report.notes || "Unknown"}</p>
         </div>
       </div>
     </div>

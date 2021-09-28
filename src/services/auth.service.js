@@ -10,7 +10,7 @@ class AuthService {
   ) {
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'multipart/form-data' },
       body: JSON.stringify({
         email: enteredEmail,
         password: enteredPassword,
@@ -28,8 +28,8 @@ class AuthService {
       setErrorMessage("Email or password are not correct!");
     } else {
       setIsLoading(false);
-      localStorage.setItem("token", data.accessToken);
-      window.location.assign("http://localhost:3000/");
+      localStorage.setItem("token", data);
+      window.location.assign("https://borisperkovic.github.io/bit-interviews-reports/");
     }
   }
 }

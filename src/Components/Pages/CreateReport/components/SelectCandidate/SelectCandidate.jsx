@@ -3,11 +3,13 @@ import { candidateCommunicator } from "../../../../../communicators/Candidates/C
 import { candidateMapper } from "../../../../../communicators/Candidates/CandidateMapper";
 import CandidateSelectItem from "./CandidateSelectItem";
 import { searchBarService } from "../../../../SearchBar/SearchBar.service";
+import Spinner from "../../../../Spinner/Spinner";
 
 const SelectCandidate = ({ pickUserHandler, nextPage, searchValue }) => {
   const [candidateList, setCandidateList] = useState([]);
   const [filterCandidateList, setFilterCandidateList] = useState([]);
   const [activeCandidate, setActiveCandidate] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getCandidates = async () => {
     const response = await candidateCommunicator.getCandidates();
@@ -16,6 +18,7 @@ const SelectCandidate = ({ pickUserHandler, nextPage, searchValue }) => {
       .map((obj) => candidateMapper.createCandidate(obj));
     setCandidateList(candidateArray);
     setFilterCandidateList(candidateList);
+    setIsLoading(false);
   };
 
   const searchCandidates = () => {
@@ -39,6 +42,7 @@ const SelectCandidate = ({ pickUserHandler, nextPage, searchValue }) => {
   return (
     <Fragment>
       <div className="row px-4 py-2 gx-3 gy-3 select-wrapper">
+        {isLoading && <Spinner />}
         {filterCandidateList.map((candidate) => (
           <CandidateSelectItem
             candidate={candidate}

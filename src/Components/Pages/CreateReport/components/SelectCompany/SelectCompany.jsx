@@ -3,6 +3,7 @@ import CompanySelectItem from "./CompanySelectItem";
 import { companyMapper } from "../../../../../communicators/Companies/CompaniesMapper";
 import { searchBarService } from "../../../../SearchBar/SearchBar.service";
 import { companiesCommunicator } from "../../../../../communicators/Companies/CompaniesCommunicator";
+import Spinner from "../../../../Spinner/Spinner";
 
 const SelectCompany = ({
   searchValue,
@@ -13,6 +14,7 @@ const SelectCompany = ({
   const [companyList, setCompanyList] = useState([]);
   const [filterCompanyList, setFilterCompanyList] = useState([]);
   const [activeCompany, setActiveCompany] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getCompaniesList = async () => {
     const response = await companiesCommunicator.getCompanies();
@@ -21,6 +23,7 @@ const SelectCompany = ({
       .map((obj) => companyMapper.createCompany(obj));
     setCompanyList(companyArray);
     setFilterCompanyList(companyArray);
+    setIsLoading(false);
   };
 
   const searchCompanies = () => {
@@ -43,6 +46,7 @@ const SelectCompany = ({
   return (
     <Fragment>
       <div className="px-4 py-2 gx-3 gy-3 select-wrapper">
+        {isLoading && <Spinner />}
         {filterCompanyList.map((company) => (
           <CompanySelectItem
             company={company}

@@ -79,8 +79,8 @@ class ReportsMapper {
     };
 
     const getNote= () => {
-      if (obj.note) {
-        return obj.note;
+      if (obj.notes) {
+        return obj.notes;
       } else {
         validationCounter++;
         return null;
@@ -100,8 +100,11 @@ class ReportsMapper {
         getNote(),
       );
     }
-  }
 
+  }
+  filterReports(arr) {
+    return arr.filter((item) => item.companyName);
+  }
 }
 
 export const reportsMapper = new ReportsMapper();

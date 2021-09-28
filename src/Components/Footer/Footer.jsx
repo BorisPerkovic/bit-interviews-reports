@@ -7,7 +7,7 @@ const Footer = () => {
 
     /* use Location hook for hiding footer in log in component */
     const location = useLocation();
-    const path = location.pathname !== "/login";
+    const path = location.pathname !== "/bit-interviews-reports/login";
 
     return(
         <Fragment>

@@ -1,5 +1,4 @@
 import { Candidate } from '../../entities/Candidate';
-import placeholderImg from "../../assets/user-placeholder.png";
 
 
 class CandidateMapper {
@@ -27,11 +26,11 @@ class CandidateMapper {
 
     const getCandidateImg = () => {
       if (obj.avatar) {
-        return `https://randomuser.me/api/portraits/men/${Math.floor(
-          Math.random() * 80
-        )}.jpg`;
+        return obj.avatar;
+      } else {
+        validationCounter++;
+        return null;
       }
-      return placeholderImg;
     };
 
     const candidateEmail = obj.email.toLowerCase() || "no email address";

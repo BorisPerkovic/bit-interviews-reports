@@ -1,3 +1,8 @@
+.report-container {
+  height: 60vh;
+  overflow: scroll;
+}
+
 .add {
   position: fixed;
   bottom: 8rem;
